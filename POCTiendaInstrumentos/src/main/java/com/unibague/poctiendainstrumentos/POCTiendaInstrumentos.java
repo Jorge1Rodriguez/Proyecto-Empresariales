@@ -22,16 +22,17 @@ public class POCTiendaInstrumentos {
 
 
         // Instancia del servicio (Singleton)
-        IServicioInstrumento servicio = ServicioInstrumento.getInstancia();
+        IServicioInstrumento servicio = new ServicioInstrumento();
 
-        // Crear accesorios
-        AccesoriosMusicales ampli = new AccesoriosMusicales("Amplificador", 200, "Electrónico", 1);
-        AccesoriosMusicales funda = new AccesoriosMusicales("Funda", 50, "Protección", 1);
+
 
         // Crear una guitarra con accesorios
         Guitarra g1 = new Guitarra("G001", "Gibson Les Paul", "Gibson", 1500, 3, "Eléctrica", "Caoba");
-        g1.agregarAccesorio(ampli);
-        g1.agregarAccesorio(funda);
+                // Crear accesorios
+        Funda funda = new Funda("F001","Funda de cuero", 200, g1);
+        Funda funda1 = new Funda("F002","Funda de tela", 50, g1);
+        g1.agregarFunda(funda);
+        g1.agregarFunda(funda1);
 
         // Crear un teclado
         Teclado t1 = new Teclado("T001", "Casio PX-160", "Casio", 600, 5, 88, true, "Alta");

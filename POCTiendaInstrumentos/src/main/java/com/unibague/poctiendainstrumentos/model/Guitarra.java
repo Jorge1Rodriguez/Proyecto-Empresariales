@@ -16,7 +16,7 @@ public class Guitarra extends Instrumento {
 
     private String tipo;
     private String materialCuerpo;
-    private List<AccesoriosMusicales> accesorios;
+    private List<Funda> fundas;
 
     //Constructor
     public Guitarra(String codigo, String nombre, String marca, double precio, int stock,
@@ -24,25 +24,25 @@ public class Guitarra extends Instrumento {
         super(codigo, nombre, marca, precio, stock);
         this.tipo = tipo;
         this.materialCuerpo = materialCuerpo;
-        this.accesorios = new ArrayList<>();
+        this.fundas = new ArrayList<>();
     }
 
     //metodos
     @Override
     public double calcularValor() {
         double valor = getPrecio();
-        for (AccesoriosMusicales accesorio : accesorios) {
-            valor += accesorio.calcularValor();
+        for (Funda funda : fundas) {
+            valor += funda.getPrecio();
         }
         return valor;
     }
 
-    public void agregarAccesorio(AccesoriosMusicales accesorio) {
-        accesorios.add(accesorio);
+    public void agregarFunda(Funda funda) {
+        fundas.add(funda);
     }
 
-    public void eliminarAccesorio(AccesoriosMusicales accesorio) {
-        accesorios.remove(accesorio);
+    public void eliminarFunda(Funda accesorio) {
+        fundas.remove(accesorio);
     }
 
     //getters y setters
@@ -62,17 +62,17 @@ public class Guitarra extends Instrumento {
         this.materialCuerpo = materialCuerpo;
     }
 
-    public List<AccesoriosMusicales> getAccesorios() {
-        return Collections.unmodifiableList(accesorios);
+    public List<Funda> getFundas() {
+        return Collections.unmodifiableList(fundas);
     }
 
-    public void setAccesorios(List<AccesoriosMusicales> accesorios) {
-        this.accesorios = accesorios;
+    public void setFundas(List<Funda> fundas) {
+        this.fundas = fundas;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "tipo=" + tipo + ", materialCuerpo=" + materialCuerpo + ", accesorios=" + accesorios + '}';
+        return super.toString() + "tipo=" + tipo + ", materialCuerpo=" + materialCuerpo + ", fundas=" + fundas + '}';
     }
 
 }

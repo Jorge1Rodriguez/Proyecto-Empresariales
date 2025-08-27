@@ -61,20 +61,8 @@ public class ServicioInstrumento implements IServicioInstrumento {
      * Constructor privado para restringir la creación de instancias
      * (Singleton). Inicializa la lista vacía de instrumentos.
      */
-    private ServicioInstrumento() {
+    public ServicioInstrumento() {
         this.instrumentos = new ArrayList<>();
-    }
-
-    /**
-     * Obtiene la instancia única del servicio {@code ServicioInstrumento}.
-     *
-     * @return La única instancia de {@code ServicioInstrumento}.
-     */
-    public static ServicioInstrumento getInstancia() {
-        if (instancia == null) {
-            instancia = new ServicioInstrumento();
-        }
-        return instancia;
     }
 
     /**
