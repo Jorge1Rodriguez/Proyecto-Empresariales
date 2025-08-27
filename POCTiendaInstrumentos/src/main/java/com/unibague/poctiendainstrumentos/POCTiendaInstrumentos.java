@@ -2,9 +2,25 @@ package com.unibague.poctiendainstrumentos;
 
 import com.unibague.poctiendainstrumentos.model.*;
 import com.unibague.poctiendainstrumentos.service.*;
+import com.unibague.poctiendainstrumentos.view.*; //Revisar si esto está bien
+
 
 public class POCTiendaInstrumentos {
     public static void main(String[] args) {
+
+        /*
+        *   Crear la instancia de la GUI principal para que se pueda ver
+        */ 
+
+       GUIPrincipal gui = new GUIPrincipal();
+       gui.setVisible(true);
+
+
+
+
+
+
+
         // Instancia del servicio (Singleton)
         IServicioInstrumento servicio = ServicioInstrumento.getInstancia();
 
