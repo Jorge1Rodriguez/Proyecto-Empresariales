@@ -44,15 +44,20 @@ public class GUIListarGeneral extends javax.swing.JFrame {
 
         tblListarGeneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Nombre", "Marca", "Precio", "Stock", "Instrumento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblListarGeneral);
 
         javax.swing.GroupLayout pnListarLayout = new javax.swing.GroupLayout(pnListar);
@@ -78,7 +83,7 @@ public class GUIListarGeneral extends javax.swing.JFrame {
                     .addComponent(pnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCerrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, Short.MAX_VALUE)
                         .addComponent(btnListar)))
                 .addContainerGap())
         );
