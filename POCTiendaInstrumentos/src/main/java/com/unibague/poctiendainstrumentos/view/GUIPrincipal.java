@@ -296,14 +296,20 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuBuscarTeclado(java.awt.event.ActionEvent evt) {                                    
         // TODO add your handling code here:
+        GUIBuscarTeclado gui = new GUIBuscarTeclado();
+        gui.setVisible(true);
     }                                   
 
     private void jMenuActualizarTeclado(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
+        GUIActualizarTeclado gui = new GUIActualizarTeclado();
+        gui.setVisible(true);
     }                                       
 
     private void jMenuEliminarTeclado(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
+        GUIEliminarTeclado gui = new GUIEliminarTeclado();
+        gui.setVisible(true);
     }                                     
 
     /**
