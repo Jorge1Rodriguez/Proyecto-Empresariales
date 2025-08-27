@@ -16,7 +16,7 @@ public class Guitarra extends Instrumento {
 
     private String tipo;
     private String materialCuerpo;
-    private List<AccesoriosMusicales> accesorios;
+    private List<AccesoriosGuitarra> accesorios;
 
     //Constructor
     public Guitarra(String codigo, String nombre, String marca, double precio, int stock,
@@ -31,17 +31,17 @@ public class Guitarra extends Instrumento {
     @Override
     public double calcularValor() {
         double valor = getPrecio();
-        for (AccesoriosMusicales accesorio : accesorios) {
+        for (AccesoriosGuitarra accesorio : accesorios) {
             valor += accesorio.calcularValor();
         }
         return valor;
     }
 
-    public void agregarAccesorio(AccesoriosMusicales accesorio) {
+    public void agregarAccesorio(AccesoriosGuitarra accesorio) {
         accesorios.add(accesorio);
     }
 
-    public void eliminarAccesorio(AccesoriosMusicales accesorio) {
+    public void eliminarAccesorio(AccesoriosGuitarra accesorio) {
         accesorios.remove(accesorio);
     }
 
@@ -62,11 +62,11 @@ public class Guitarra extends Instrumento {
         this.materialCuerpo = materialCuerpo;
     }
 
-    public List<AccesoriosMusicales> getAccesorios() {
+    public List<AccesoriosGuitarra> getAccesorios() {
         return Collections.unmodifiableList(accesorios);
     }
 
-    public void setAccesorios(List<AccesoriosMusicales> accesorios) {
+    public void setAccesorios(List<AccesoriosGuitarra> accesorios) {
         this.accesorios = accesorios;
     }
 

@@ -8,7 +8,7 @@ package com.unibague.poctiendainstrumentos.model;
  *
  * @author jorge
  */
-public class AccesoriosMusicales {
+public class AccesoriosGuitarra {
 
     private String nombre;
     private double precio;
@@ -16,7 +16,7 @@ public class AccesoriosMusicales {
     private int cantidad;
 
     //constructor
-    public AccesoriosMusicales(String nombre, double precio, String tipo, int cantidad){
+    public AccesoriosGuitarra(String nombre, double precio, String tipo, int cantidad){
         this.nombre = nombre;
         setPrecio(precio);
         this.tipo = tipo;

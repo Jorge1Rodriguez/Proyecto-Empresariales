@@ -9,8 +9,8 @@ public class POCTiendaInstrumentos {
         IServicioInstrumento servicio = ServicioInstrumento.getInstancia();
 
         // Crear accesorios
-        AccesoriosMusicales ampli = new AccesoriosMusicales("Amplificador", 200, "Electrónico", 1);
-        AccesoriosMusicales funda = new AccesoriosMusicales("Funda", 50, "Protección", 1);
+        AccesoriosGuitarra ampli = new AccesoriosGuitarra("Amplificador", 200, "Electrónico", 1);
+        AccesoriosGuitarra funda = new AccesoriosGuitarra("Funda", 50, "Protección", 1);
 
         // Crear una guitarra con accesorios
         Guitarra g1 = new Guitarra("G001", "Gibson Les Paul", "Gibson", 1500, 3, "Eléctrica", "Caoba");
