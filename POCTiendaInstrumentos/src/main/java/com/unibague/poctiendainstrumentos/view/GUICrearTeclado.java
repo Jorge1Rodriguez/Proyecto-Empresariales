@@ -44,6 +44,7 @@ public class GUICrearTeclado extends javax.swing.JFrame {
         txtSensibilidad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Crear teclado");
 
         btnCrear.setText("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -74,12 +75,6 @@ public class GUICrearTeclado extends javax.swing.JFrame {
         lbldigital.setText("Digital o analógico");
 
         lblSensibilidad.setText("Sensibilidad");
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         rbtnDigital.setText("Digital");
 
@@ -192,10 +187,6 @@ public class GUICrearTeclado extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }                          
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
 
     /**
      * @param args the command line arguments
