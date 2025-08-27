@@ -52,10 +52,6 @@ public class ServicioInstrumento implements IServicioInstrumento {
      * Colección de instrumentos administrados por el servicio.
      */
     private List<Instrumento> instrumentos;
-    /**
-     * Instancia única del servicio (patrón Singleton).
-     */
-    private static ServicioInstrumento instancia;
 
     /**
      * Constructor privado para restringir la creación de instancias

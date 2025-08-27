@@ -41,8 +41,18 @@ public class Guitarra extends Instrumento {
         fundas.add(funda);
     }
 
-    public void eliminarFunda(Funda accesorio) {
-        fundas.remove(accesorio);
+    public void eliminarFunda(String codigo) {
+        Funda funda = buscarFunda(codigo);
+        fundas.remove(funda);
+    }
+
+    public Funda buscarFunda(String codigo) {
+        for (Funda funda : fundas) {
+            if (funda.getCodigo().equalsIgnoreCase(codigo)) {
+                return funda;
+            }
+        }
+        return null;
     }
 
     //getters y setters

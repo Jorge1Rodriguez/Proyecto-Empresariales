@@ -1,16 +1,20 @@
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import com.unibague.poctiendainstrumentos.service.ServicioInstrumento;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class GUIPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIPrincipal.class.getName());
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIPrincipal
      */
     public GUIPrincipal() {
+        this.servicioInstrumento = new ServicioInstrumento();
         initComponents();
         setLocationRelativeTo(null);
     }
