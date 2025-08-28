@@ -36,6 +36,7 @@ public class GUIListarFundas extends javax.swing.JFrame {
         btnListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Listar fundas");
 
         tblFundas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

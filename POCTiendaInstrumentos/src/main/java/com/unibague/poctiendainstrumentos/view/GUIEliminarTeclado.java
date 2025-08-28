@@ -113,11 +113,11 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
                     .addComponent(txtStock)
                     .addComponent(txtNumTeclas)
                     .addComponent(txtSensibilidad)
-                    .addComponent(txtDigitalAnalogico)
                     .addGroup(pnActualizarTecladoLayout.createSequentialGroup()
                         .addComponent(txtCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar)))
+                        .addComponent(btnBuscar))
+                    .addComponent(txtDigitalAnalogico, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         pnActualizarTecladoLayout.setVerticalGroup(
