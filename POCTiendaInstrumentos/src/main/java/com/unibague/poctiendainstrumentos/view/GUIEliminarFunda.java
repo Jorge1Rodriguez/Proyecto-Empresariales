@@ -4,6 +4,8 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,13 +13,17 @@ import javax.swing.JOptionPane;
  * @author gerca
  */
 public class GUIEliminarFunda extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIEliminarFunda.class.getName());
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIGuitarra
+     *
+     * @param servicioInstrumento
      */
-    public GUIEliminarFunda() {
+    public GUIEliminarFunda(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -38,6 +44,8 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         txtCodFunda = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
@@ -60,7 +68,15 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
         jLabel10.setText("Precio:");
 
-        jLabel3.setText("Código:");
+        jLabel3.setText("Código Guitarra:");
+
+        jLabel1.setText("Código Funda:");
+
+        txtCodFunda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodFundaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,14 +85,22 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPrecio)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addComponent(txtCodFunda))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrecio)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodFunda, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,9 +108,13 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodFunda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCodFunda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -94,7 +122,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         btnCerrar.setText("Cerrar");
@@ -128,7 +156,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -147,14 +175,27 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
         int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar la funda buscada?", "Confirmación", JOptionPane.YES_NO_OPTION);
-        if (borrar == JOptionPane.YES_OPTION){
-            
-            //
-            //AQUI VA LA LOGICA DEL BORRADO
-            //
-            
+        if (borrar == JOptionPane.YES_OPTION) {
+            if (txtCodFunda.getText().isBlank() || txtCodigo.getText().isBlank()) {
+                JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+                if (guitarra != null) {
+                    if (guitarra.buscarFunda(txtCodFunda.getText()) != null) {
+                        guitarra.eliminarFunda(txtCodFunda.getText());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            txtCodigo.setText("");
+            txtCodFunda.setText("");
+            txtNombre.setText("");
+            txtPrecio.setText("");
             JOptionPane.showMessageDialog(null, "La funda se ha borrado exitosamente");
-            
+
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
@@ -162,40 +203,22 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void txtCodFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodFundaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodFundaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new GUIEliminarFunda().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCodFunda;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables

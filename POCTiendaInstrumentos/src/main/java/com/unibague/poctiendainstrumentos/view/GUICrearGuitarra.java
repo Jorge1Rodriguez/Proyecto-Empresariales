@@ -27,7 +27,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
         btnGroupDigitalAnalogico.add(rbtnSi);
         btnGroupDigitalAnalogico.add(rbtnNo);
         setLocationRelativeTo(null);
-        gui = new GUIAgregarFunda();
+        gui = new GUIAgregarFunda(servicioInstrumento);
     }
 
     /**
