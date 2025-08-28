@@ -1,6 +1,7 @@
 package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.model.Instrumento;
+import com.unibague.poctiendainstrumentos.model.Teclado;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -118,7 +119,7 @@ public class GUIListarGeneral extends javax.swing.JFrame {
         for(Instrumento instrumento : listaInstrumentos)
         {
             model.addRow(new Object[]{instrumento.getCodigo(), instrumento.getNombre(), instrumento.getMarca(), instrumento.getPrecio(),
-                    instrumento.getStock()});
+                    instrumento.getStock(), instrumento instanceof Teclado ? "Teclado" : "Guitarra"});
         }
     }                          
 
