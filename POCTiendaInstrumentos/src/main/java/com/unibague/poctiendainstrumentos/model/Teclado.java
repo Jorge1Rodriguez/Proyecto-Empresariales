@@ -31,12 +31,12 @@ public class Teclado extends Instrumento implements IProgramable {
 
     @Override
     public String guardarPreset(String nombre) {
-        return "Preset " + nombre +  " guardado en el teclado " + getNombre() + "con codigo" + getCodigo();
+        return "Preset " + nombre +  " guardado en el teclado " + getNombre() + "con codigo " + getCodigo();
     }
 
     @Override
     public String cargarPreset(String nombre) {
-        return "Preset " + nombre + " cargado en el teclado " + getNombre() + "con codigo" + getCodigo();
+        return "Preset " + nombre + " cargado en el teclado " + getNombre() + "con codigo " + getCodigo();
     }
 
     // Getters y setters
