@@ -4,6 +4,12 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Funda;
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gerca
@@ -11,11 +17,14 @@ package com.unibague.poctiendainstrumentos.view;
 public class GUIListarFundas extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIListarFundas.class.getName());
+    GUIBuscarGuitarra gui;
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIActualizarStock
      */
-    public GUIListarFundas() {
+    public GUIListarFundas(GUIBuscarGuitarra gui) {
+        this.gui = gui;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -123,7 +132,13 @@ public class GUIListarFundas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
+        List<Funda> listaFundas = gui.getGuitarra().getFundas();
+        DefaultTableModel model = (DefaultTableModel) tblFundas.getModel();
+        model.setRowCount(0);
+        for(Funda funda : listaFundas)
+        {
+            model.addRow(new Object[]{funda.getCodigo(), funda.getNombre(), funda.getPrecio()});
+        }
     }//GEN-LAST:event_btnListarActionPerformed
 
     

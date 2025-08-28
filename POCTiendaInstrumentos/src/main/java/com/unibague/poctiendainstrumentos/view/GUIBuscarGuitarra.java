@@ -202,6 +202,10 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
                 txtStock.setText(Integer.toString(guitarraActualizar.getStock()));
                 txtTipo.setText(guitarraActualizar.getTipo());
                 txtMaterial.setText(guitarraActualizar.getMaterialCuerpo());
+                if(!guitarraActualizar.getFundas().isEmpty())
+                {
+                    GUIListarFundas gui = new GUIListarFundas(this);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 
@@ -211,6 +215,9 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuscar
 
+    public Guitarra getGuitarra(){
+        return (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
