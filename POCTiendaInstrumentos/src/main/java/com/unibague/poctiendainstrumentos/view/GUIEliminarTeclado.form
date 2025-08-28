@@ -79,12 +79,12 @@
                       <Component id="txtStock" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtNumTeclas" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtSensibilidad" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtDigitalAnalogico" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="txtCodigo" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="txtDigitalAnalogico" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

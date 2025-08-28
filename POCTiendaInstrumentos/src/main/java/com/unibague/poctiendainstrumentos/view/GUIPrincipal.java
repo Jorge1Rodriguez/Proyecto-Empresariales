@@ -9,10 +9,7 @@ import com.unibague.poctiendainstrumentos.service.ServicioInstrumento;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author gerca
- */
+
 public class GUIPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIPrincipal.class.getName());
@@ -38,185 +35,187 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuArchivo = new javax.swing.JMenu();
+        jMenuItemSalir = new javax.swing.JMenuItem();
+        jMenuInstrumento = new javax.swing.JMenu();
+        jMenuItemListar = new javax.swing.JMenuItem();
+        jMenuGuitarra = new javax.swing.JMenu();
+        jMenuItemAgregarFunda = new javax.swing.JMenuItem();
+        jMenuItemEliminarFunda = new javax.swing.JMenuItem();
+        jMenuItemListarGuitarra = new javax.swing.JMenuItem();
+        jMenuItemAgregarGuitarra = new javax.swing.JMenuItem();
+        jMenuItemBuscarGuitarra = new javax.swing.JMenuItem();
+        jMenuItemActualizarGuitarra = new javax.swing.JMenuItem();
+        jMenuItemEliminarGuitarra = new javax.swing.JMenuItem();
+        jMenuTeclado = new javax.swing.JMenu();
+        jMenuItemGuardarPreset = new javax.swing.JMenuItem();
+        jMenuItemCargaPreset = new javax.swing.JMenuItem();
+        jMenuItemListarTeclado = new javax.swing.JMenuItem();
+        jMenuItemAgregarTeclado = new javax.swing.JMenuItem();
+        jMenuItemBuscarTeclado = new javax.swing.JMenuItem();
+        jMenuItemActualizarTeclado = new javax.swing.JMenuItem();
+        jMenuItemEliminarTeclado = new javax.swing.JMenuItem();
+        jMenuAyuda = new javax.swing.JMenu();
+        jMenuItemAcercaDe = new javax.swing.JMenuItem();
 
         jMenuItem14.setText("jMenuItem14");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tienda de Instrumentos");
+        setResizable(false);
 
-        jMenu1.setText("Archivo");
+        jMenuArchivo.setText("Archivo");
 
-        jMenuItem18.setText("Salir");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
+                jMenuItemSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem18);
+        jMenuArchivo.add(jMenuItemSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuArchivo);
 
-        jMenu2.setText("Instrumento");
+        jMenuInstrumento.setText("Instrumento");
 
-        jMenuItem2.setText("Listar");
-        jMenuItem2.setToolTipText("");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListar.setText("Listar");
+        jMenuItemListar.setToolTipText("");
+        jMenuItemListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemListarActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenuInstrumento.add(jMenuItemListar);
 
-        jMenu4.setText("Guitarra");
+        jMenuGuitarra.setText("Guitarra");
 
-        jMenuItem5.setText("Agregar Accesorio");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAgregarFunda.setText("Agregar Funda");
+        jMenuItemAgregarFunda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemAgregarFundaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
+        jMenuGuitarra.add(jMenuItemAgregarFunda);
 
-        jMenuItem17.setText("Eliminar Accesorio");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEliminarFunda.setText("Eliminar Funda");
+        jMenuItemEliminarFunda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem17ActionPerformed(evt);
+                jMenuItemEliminarFundaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem17);
+        jMenuGuitarra.add(jMenuItemEliminarFunda);
 
-        jMenuItem10.setText("Listar");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListarGuitarra.setText("Listar");
+        jMenuItemListarGuitarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMenuItemListarGuitarraActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem10);
+        jMenuGuitarra.add(jMenuItemListarGuitarra);
 
-        jMenuItem8.setText("Agregar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAgregarGuitarra.setText("Agregar");
+        jMenuItemAgregarGuitarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItemAgregarGuitarraActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem8);
+        jMenuGuitarra.add(jMenuItemAgregarGuitarra);
 
-        jMenuItem9.setText("Buscar");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBuscarGuitarra.setText("Buscar");
+        jMenuItemBuscarGuitarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMenuItemBuscarGuitarraActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem9);
+        jMenuGuitarra.add(jMenuItemBuscarGuitarra);
 
-        jMenuItem3.setText("Editar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemActualizarGuitarra.setText("Actualizar");
+        jMenuItemActualizarGuitarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemActualizarGuitarraActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        jMenuGuitarra.add(jMenuItemActualizarGuitarra);
 
-        jMenuItem4.setText("Eliminar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEliminarGuitarra.setText("Eliminar");
+        jMenuItemEliminarGuitarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemEliminarGuitarraActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenuGuitarra.add(jMenuItemEliminarGuitarra);
 
-        jMenu2.add(jMenu4);
+        jMenuInstrumento.add(jMenuGuitarra);
 
-        jMenu5.setText("Teclado");
+        jMenuTeclado.setText("Teclado");
 
-        jMenuItem6.setText("Guardar Preset");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemGuardarPreset.setText("Guardar Preset");
+        jMenuItemGuardarPreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuItemGuardarPresetActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem6);
+        jMenuTeclado.add(jMenuItemGuardarPreset);
 
-        jMenuItem7.setText("Cargar Preset");
-        jMenu5.add(jMenuItem7);
+        jMenuItemCargaPreset.setText("Cargar Preset");
+        jMenuTeclado.add(jMenuItemCargaPreset);
 
-        jMenuItem11.setText("Listar");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemListarTeclado.setText("Listar");
+        jMenuItemListarTeclado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItemListarTecladoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem11);
+        jMenuTeclado.add(jMenuItemListarTeclado);
 
-        jMenuItem12.setText("Agregar");
-        jMenuItem12.setToolTipText("");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAgregarTeclado.setText("Agregar");
+        jMenuItemAgregarTeclado.setToolTipText("");
+        jMenuItemAgregarTeclado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jMenuItemAgregarTecladoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem12);
+        jMenuTeclado.add(jMenuItemAgregarTeclado);
 
-        jMenuItem13.setText("Buscar");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBuscarTeclado.setText("Buscar");
+        jMenuItemBuscarTeclado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                jMenuItemBuscarTecladoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem13);
+        jMenuTeclado.add(jMenuItemBuscarTeclado);
 
-        jMenuItem15.setText("Actualizar");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemActualizarTeclado.setText("Actualizar");
+        jMenuItemActualizarTeclado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
+                jMenuItemActualizarTecladoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem15);
+        jMenuTeclado.add(jMenuItemActualizarTeclado);
 
-        jMenuItem16.setText("Eliminar");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEliminarTeclado.setText("Eliminar");
+        jMenuItemEliminarTeclado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
+                jMenuItemEliminarTecladoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem16);
+        jMenuTeclado.add(jMenuItemEliminarTeclado);
 
-        jMenu2.add(jMenu5);
+        jMenuInstrumento.add(jMenuTeclado);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuInstrumento);
 
-        jMenu3.setText("Ayuda");
+        jMenuAyuda.setText("Ayuda");
 
-        jMenuItem1.setText("Acerca de...");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAcercaDe.setText("Acerca de...");
+        jMenuItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemAcercaDeActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenuAyuda.add(jMenuItemAcercaDe);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuAyuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -234,97 +233,97 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JOptionPane.showMessageDialog(this, "Desarrollado por - German Castellanos - Juan Lozano - David Orjuela - Jorge Rodriguez - ");
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
+        JOptionPane.showMessageDialog(this, "Desarrollado por:\nGerman Castellanos\nJuan Lozano\nDavid Orjuela\nJorge Rodriguez");
+    }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
         GUIListarGeneral gui = new GUIListarGeneral();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemListarActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuItemAgregarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarFundaActionPerformed
         // TODO add your handling code here:
         GUIAgregarFunda gui = new GUIAgregarFunda();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarFundaActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jMenuItemBuscarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarGuitarraActionPerformed
         // TODO add your handling code here:
         GUIBuscarGuitarra gui = new GUIBuscarGuitarra();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jMenuItemBuscarGuitarraActionPerformed
 
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
         // TODO add your handling code here:
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jMenuItemAgregarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarGuitarraActionPerformed
         GUICrearGuitarra gui = new GUICrearGuitarra();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarGuitarraActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemActualizarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarGuitarraActionPerformed
         // TODO add your handling code here:
         GUIActualizarGuitarra gui = new GUIActualizarGuitarra();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemActualizarGuitarraActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemEliminarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarGuitarraActionPerformed
         // TODO add your handling code here:
         GUIEliminarGuitarra gui = new GUIEliminarGuitarra();
         gui.setVisible(true);
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemEliminarGuitarraActionPerformed
 
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+    private void jMenuItemEliminarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarFundaActionPerformed
         // TODO add your handling code here:
         GUIEliminarFunda gui = new GUIEliminarFunda();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
+    }//GEN-LAST:event_jMenuItemEliminarFundaActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void jMenuItemListarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarGuitarraActionPerformed
         // TODO add your handling code here:
         GUIListarGuitarra gui = new GUIListarGuitarra();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_jMenuItemListarGuitarraActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jMenuItemGuardarPresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarPresetActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jMenuItemGuardarPresetActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+    private void jMenuItemActualizarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarTecladoActionPerformed
         // TODO add your handling code here:
         GUIActualizarTeclado gui = new GUIActualizarTeclado();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+    }//GEN-LAST:event_jMenuItemActualizarTecladoActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    private void jMenuItemBuscarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarTecladoActionPerformed
         // TODO add your handling code here
         GUIBuscarTeclado gui = new GUIBuscarTeclado();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_jMenuItemBuscarTecladoActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void jMenuItemAgregarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarTecladoActionPerformed
         // TODO add your handling code here:
         GUICrearTeclado gui = new GUICrearTeclado();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarTecladoActionPerformed
 
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+    private void jMenuItemEliminarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarTecladoActionPerformed
         // TODO add your handling code here:
         GUIEliminarTeclado gui = new GUIEliminarTeclado();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
+    }//GEN-LAST:event_jMenuItemEliminarTecladoActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void jMenuItemListarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarTecladoActionPerformed
         // TODO add your handling code here:
         GUIListarTeclado gui = new GUIListarTeclado();
         gui.setVisible(true);
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    }//GEN-LAST:event_jMenuItemListarTecladoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,29 +351,29 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuArchivo;
+    private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenu jMenuGuitarra;
+    private javax.swing.JMenu jMenuInstrumento;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAcercaDe;
+    private javax.swing.JMenuItem jMenuItemActualizarGuitarra;
+    private javax.swing.JMenuItem jMenuItemActualizarTeclado;
+    private javax.swing.JMenuItem jMenuItemAgregarFunda;
+    private javax.swing.JMenuItem jMenuItemAgregarGuitarra;
+    private javax.swing.JMenuItem jMenuItemAgregarTeclado;
+    private javax.swing.JMenuItem jMenuItemBuscarGuitarra;
+    private javax.swing.JMenuItem jMenuItemBuscarTeclado;
+    private javax.swing.JMenuItem jMenuItemCargaPreset;
+    private javax.swing.JMenuItem jMenuItemEliminarFunda;
+    private javax.swing.JMenuItem jMenuItemEliminarGuitarra;
+    private javax.swing.JMenuItem jMenuItemEliminarTeclado;
+    private javax.swing.JMenuItem jMenuItemGuardarPreset;
+    private javax.swing.JMenuItem jMenuItemListar;
+    private javax.swing.JMenuItem jMenuItemListarGuitarra;
+    private javax.swing.JMenuItem jMenuItemListarTeclado;
+    private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenu jMenuTeclado;
     // End of variables declaration//GEN-END:variables
 }

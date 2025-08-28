@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="btnGroupDigitalAnalogico">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Buscar guitarra"/>
+    <Property name="title" type="java.lang.String" value="Crear teclado"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -25,14 +29,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="pnBuscarTeclado" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnCrearTeclado" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCrear" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -43,11 +47,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnBuscarTeclado" min="-2" max="-2" attributes="0"/>
+              <Component id="pnCrearTeclado" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="17" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -55,6 +59,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="btnCrear">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrear"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerrar"/>
@@ -63,15 +75,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrar"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnBuscar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscar"/>
-      </Events>
-    </Component>
-    <Container class="javax.swing.JPanel" name="pnBuscarTeclado">
+    <Container class="javax.swing.JPanel" name="pnCrearTeclado">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -84,18 +88,24 @@
                       <Component id="lblMarca" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblStock" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTipo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblMaterial" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNumTeclas" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbldigital" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSensibilidad" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtPrecio" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtMarca" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtNombre" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txtNombre" max="32767" attributes="0"/>
+                      <Component id="txtMarca" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtPrecio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtStock" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtNumTeclas" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="rbtnDigital" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="103" max="32767" attributes="0"/>
+                          <Component id="rbtnAnalogico" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txtSensibilidad" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtCodigo" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtMaterial" alignment="1" pref="237" max="32767" attributes="0"/>
-                      <Component id="txtTipo" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtStock" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -103,43 +113,49 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtStock" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtStock" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNumTeclas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNumTeclas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbldigital" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtnDigital" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtnAnalogico" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblSensibilidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSensibilidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -170,47 +186,44 @@
             <Property name="text" type="java.lang.String" value="Stock"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTipo">
+        <Component class="javax.swing.JLabel" name="lblNumTeclas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo"/>
+            <Property name="text" type="java.lang.String" value="Numero de teclas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblMaterial">
+        <Component class="javax.swing.JLabel" name="lbldigital">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Material del cuerpo"/>
+            <Property name="text" type="java.lang.String" value="Digital o anal&#xf3;gico"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSensibilidad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sensibilidad"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigo">
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMarca">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecio">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtStock">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNumTeclas">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtnDigital">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Digital"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTipo">
+        <Component class="javax.swing.JRadioButton" name="rbtnAnalogico">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Anal&#xf3;gico"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMaterial">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtSensibilidad">
         </Component>
       </SubComponents>
     </Container>

@@ -49,6 +49,7 @@ public class GUIBuscarTeclado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar teclado");
+        setResizable(false);
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,14 +112,14 @@ public class GUIBuscarTeclado extends javax.swing.JFrame {
                     .addComponent(lbldigital))
                 .addGap(40, 40, 40)
                 .addGroup(pnBuscarTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addComponent(txtNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                     .addComponent(txtMarca)
                     .addComponent(txtPrecio)
                     .addComponent(txtStock)
                     .addComponent(txtNumTeclas)
                     .addComponent(txtSensibilidad)
-                    .addComponent(txtDigitalAnalogico))
+                    .addComponent(txtDigitalAnalogico)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         pnBuscarTecladoLayout.setVerticalGroup(
