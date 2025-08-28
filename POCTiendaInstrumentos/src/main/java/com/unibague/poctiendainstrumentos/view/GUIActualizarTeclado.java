@@ -206,7 +206,7 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
             try {
                 
                 Teclado teclado = new Teclado(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
-                        Integer.parseInt(txtStock.getText()), Integer.parseInt(txtNumTeclas.getText()), txtCodigo.getText().equalsIgnoreCase("digital") ? true : false, txtSensibilidad.getText());
+                        Integer.parseInt(txtStock.getText()), Integer.parseInt(txtNumTeclas.getText()), txtDigitalAnalogico.getText().equalsIgnoreCase("digital") ? true : false, txtSensibilidad.getText());
                 servicioInstrumento.editarInstrumento(txtCodigo.getText(), teclado);
                 JOptionPane.showMessageDialog(this, "Teclado actualizado correctamente");
                 txtCodigo.setText("");
