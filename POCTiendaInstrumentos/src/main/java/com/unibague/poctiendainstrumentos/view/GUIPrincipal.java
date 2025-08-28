@@ -158,6 +158,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuTeclado.add(jMenuItemGuardarPreset);
 
         jMenuItemCargaPreset.setText("Cargar Preset");
+        jMenuItemCargaPreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCargaPresetActionPerformed(evt);
+            }
+        });
         jMenuTeclado.add(jMenuItemCargaPreset);
 
         jMenuItemListarTeclado.setText("Listar");
@@ -291,7 +296,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemListarGuitarraActionPerformed
 
     private void jMenuItemGuardarPresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarPresetActionPerformed
-        // TODO add your handling code here:
+       
+        GUIGuardarPreset gui = new GUIGuardarPreset(servicioInstrumento);
+        gui.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemGuardarPresetActionPerformed
 
@@ -324,6 +331,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         GUIListarTeclado gui = new GUIListarTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarTecladoActionPerformed
+
+    private void jMenuItemCargaPresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCargaPresetActionPerformed
+        GUICargarPreset gui = new GUICargarPreset(servicioInstrumento);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCargaPresetActionPerformed
 
     /**
      * @param args the command line arguments
