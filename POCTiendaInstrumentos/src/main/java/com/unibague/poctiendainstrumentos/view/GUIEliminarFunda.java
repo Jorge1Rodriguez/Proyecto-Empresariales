@@ -46,6 +46,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar funda");
+        setResizable(false);
 
         jLabel2.setText("Nombre:");
 
