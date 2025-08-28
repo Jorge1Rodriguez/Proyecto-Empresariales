@@ -54,6 +54,7 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar funda");
+        setResizable(false);
 
         jLabel1.setText("Código Guitarra:");
 

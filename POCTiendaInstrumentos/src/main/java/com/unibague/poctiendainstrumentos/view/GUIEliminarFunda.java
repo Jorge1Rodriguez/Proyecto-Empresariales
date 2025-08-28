@@ -54,15 +54,11 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar funda");
+        setResizable(false);
 
         jLabel2.setText("Nombre:");
 
         txtNombre.setEditable(false);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         txtPrecio.setEditable(false);
 
@@ -71,12 +67,6 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         jLabel3.setText("Código Guitarra:");
 
         jLabel1.setText("Código Funda:");
-
-        txtCodFunda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodFundaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,13 +189,6 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtCodFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodFundaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodFundaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

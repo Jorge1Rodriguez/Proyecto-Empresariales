@@ -57,6 +57,7 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar teclado");
+        setResizable(false);
 
         lblCodigo.setText("Código");
 

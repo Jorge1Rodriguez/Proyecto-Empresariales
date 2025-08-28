@@ -4,16 +4,23 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
  */
 public class GUIBuscarGuitarra extends javax.swing.JFrame {
 
+    
+    private IServicioInstrumento servicioInstrumento;
     /**
      * Creates new form GUIBuscarTeclado
      */
-    public GUIBuscarGuitarra() {
+    public GUIBuscarGuitarra(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -183,45 +190,28 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código de la guitarra a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarraActualizar = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (guitarraActualizar != null) {
+                txtCodigo.setEditable(false);
+                txtNombre.setText(guitarraActualizar.getNombre());
+                txtMarca.setText(guitarraActualizar.getMarca());
+                txtPrecio.setText(Double.toString(guitarraActualizar.getPrecio()));
+                txtStock.setText(Integer.toString(guitarraActualizar.getStock()));
+                txtTipo.setText(guitarraActualizar.getTipo());
+                txtMaterial.setText(guitarraActualizar.getMaterialCuerpo());
+            } else {
+                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                
+            }
+            
+        }
 
     }//GEN-LAST:event_btnBuscar
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIBuscarGuitarra().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

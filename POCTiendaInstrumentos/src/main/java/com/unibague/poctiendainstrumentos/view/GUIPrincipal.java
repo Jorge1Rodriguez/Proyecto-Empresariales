@@ -243,7 +243,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
-        GUIListarGeneral gui = new GUIListarGeneral();
+        GUIListarGeneral gui = new GUIListarGeneral(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarActionPerformed
 
@@ -255,13 +255,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBuscarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarGuitarraActionPerformed
         // TODO add your handling code here:
-        GUIBuscarGuitarra gui = new GUIBuscarGuitarra();
+        GUIBuscarGuitarra gui = new GUIBuscarGuitarra(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemBuscarGuitarraActionPerformed
 
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
-        // TODO add your handling code here:
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
