@@ -4,6 +4,8 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Teclado;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,10 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class GUIEliminarTeclado extends javax.swing.JFrame {
 
+    private IServicioInstrumento servicioInstrumento;
+
     /**
      * Creates new form GUIEliminarTeclado
      */
-    public GUIEliminarTeclado() {
+    public GUIEliminarTeclado(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -203,7 +208,33 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código del teclado a eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Teclado tecladoBuscar = (Teclado) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (tecladoBuscar != null) {
+                txtNombre.setText(tecladoBuscar.getNombre());
+                txtMarca.setText(tecladoBuscar.getMarca());
+                txtPrecio.setText(Double.toString(tecladoBuscar.getPrecio()));
+                txtStock.setText(Integer.toString(tecladoBuscar.getStock()));
+                txtNumTeclas.setText(Integer.toString(tecladoBuscar.getNumeroTeclas()));
+                txtDigitalAnalogico.setText(tecladoBuscar.isEsDigital() ? "Digital" : "Analogico");
+                txtSensibilidad.setText(tecladoBuscar.getSensibilidad());
+
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtNumTeclas.setText("");
+                txtDigitalAnalogico.setText("");
+                txtSensibilidad.setText("");
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+
+        }
     }//GEN-LAST:event_btnBuscar
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
@@ -214,51 +245,15 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
     private void btnBorrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar
         // TODO add your handling code here:
         int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar el teclado buscado?", "Confirmación", JOptionPane.YES_NO_OPTION);
-        if (borrar == JOptionPane.YES_OPTION){
-            
-            //
-            //AQUI VA LA LOGICA DEL BORRADO
-            //
-            
+        if (borrar == JOptionPane.YES_OPTION) {
+
+            servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
+
             JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
-            
+
         }
     }//GEN-LAST:event_btnBorrar
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIEliminarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIEliminarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIEliminarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIEliminarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIEliminarTeclado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;

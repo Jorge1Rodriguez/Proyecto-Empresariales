@@ -69,5 +69,10 @@ public class POCTiendaInstrumentos {
         t1.guardarPreset("Rock");
         t1.cargarPreset("Rock");
         t1.cargarPreset("Jazz"); // este no existe
+        
+         System.out.println("=== Lista de instrumentos ===");
+        for (Instrumento i : servicio.listarInstrumentos()) {
+            System.out.println(i + " | Valor total: $" + i.calcularValor());
+        }
     }
 }

@@ -4,16 +4,22 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Teclado;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
  */
 public class GUIBuscarTeclado extends javax.swing.JFrame {
 
+    private IServicioInstrumento servicioInstrumento;
     /**
      * Creates new form GUIBuscarTeclado
      */
-    public GUIBuscarTeclado() {
+    public GUIBuscarTeclado(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -195,44 +201,27 @@ public class GUIBuscarTeclado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código del teclado a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Teclado tecladoBuscar = (Teclado) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (tecladoBuscar != null) {
+                txtNombre.setText(tecladoBuscar.getNombre());
+                txtMarca.setText(tecladoBuscar.getMarca());
+                txtPrecio.setText(Double.toString(tecladoBuscar.getPrecio()));
+                txtStock.setText(Integer.toString(tecladoBuscar.getStock()));
+                txtNumTeclas.setText(Integer.toString(tecladoBuscar.getNumeroTeclas()));
+                txtDigitalAnalogico.setText(tecladoBuscar.isEsDigital() ? "Digital" : "Analogico");
+                txtSensibilidad.setText(tecladoBuscar.getSensibilidad());
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        }
 
     }//GEN-LAST:event_btnBuscar
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIBuscarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIBuscarTeclado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

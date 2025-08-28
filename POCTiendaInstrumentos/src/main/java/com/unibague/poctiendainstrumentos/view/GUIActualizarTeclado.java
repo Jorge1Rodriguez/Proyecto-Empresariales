@@ -209,7 +209,6 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
                         Integer.parseInt(txtStock.getText()), Integer.parseInt(txtNumTeclas.getText()), txtCodigo.getText().equalsIgnoreCase("digital") ? true : false, txtSensibilidad.getText());
                 servicioInstrumento.editarInstrumento(txtCodigo.getText(), teclado);
                 JOptionPane.showMessageDialog(this, "Teclado actualizado correctamente");
-                txtCodigo.setEditable(true);
                 txtCodigo.setText("");
                 txtNombre.setText("");
                 txtMarca.setText("");
@@ -233,7 +232,6 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
         } else {
             Teclado tecladoActualizar = (Teclado) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
             if (tecladoActualizar != null) {
-                txtCodigo.setEditable(false);
                 txtNombre.setText(tecladoActualizar.getNombre());
                 txtMarca.setText(tecladoActualizar.getMarca());
                 txtPrecio.setText(Double.toString(tecladoActualizar.getPrecio()));
