@@ -238,7 +238,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
-        GUIListarGeneral gui = new GUIListarGeneral();
+        GUIListarGeneral gui = new GUIListarGeneral(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarActionPerformed
 
