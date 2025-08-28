@@ -4,16 +4,23 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Teclado;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
  */
 public class GUICrearTeclado extends javax.swing.JFrame {
 
+    private IServicioInstrumento servicioInstrumento;
+
     /**
      * Creates new form GUICrearTeclado
      */
-    public GUICrearTeclado() {
+    public GUICrearTeclado(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         btnGroupDigitalAnalogico.add(rbtnDigital);
         btnGroupDigitalAnalogico.add(rbtnAnalogico);
@@ -188,8 +195,36 @@ public class GUICrearTeclado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrear(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear
-        // TODO add your handling code here:
-        
+        if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank() || txtMarca.getText().isBlank() || txtPrecio.getText().isBlank()
+                || txtStock.getText().isBlank() || txtNumTeclas.getText().isBlank() || txtSensibilidad.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else if (!rbtnAnalogico.isSelected() && !rbtnDigital.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Selecciona si es Digital o Analogico", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                if (servicioInstrumento.buscarInstrumento(txtCodigo.getText()) == null) {
+                    Teclado teclado = new Teclado(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
+                            Integer.parseInt(txtStock.getText()), Integer.parseInt(txtNumTeclas.getText()), rbtnDigital.isSelected() ? true : false, txtSensibilidad.getText());
+                    servicioInstrumento.agregarInstrumento(teclado);
+                    JOptionPane.showMessageDialog(this, "Teclado agregado correctamente");
+                    txtCodigo.setText("");
+                    txtNombre.setText("");
+                    txtMarca.setText("");
+                    txtPrecio.setText("");
+                    txtStock.setText("");
+                    txtNumTeclas.setText("");
+                    btnGroupDigitalAnalogico.clearSelection();
+                    txtSensibilidad.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "El teclado que intentas agregar ya existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (RuntimeException e) {
+
+                JOptionPane.showMessageDialog(this, "El precio, stock y numero de teclas debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
     }//GEN-LAST:event_btnCrear
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
@@ -197,41 +232,6 @@ public class GUICrearTeclado extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCerrar
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICrearTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICrearTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICrearTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICrearTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUICrearTeclado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

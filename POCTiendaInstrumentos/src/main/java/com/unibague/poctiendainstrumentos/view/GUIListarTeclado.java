@@ -1,11 +1,20 @@
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Instrumento;
+import com.unibague.poctiendainstrumentos.model.Teclado;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 public class GUIListarTeclado extends javax.swing.JFrame {
 
+    private IServicioInstrumento servicioInstrumento;
+    
     /**
      * Creates new form GUIListarTeclado
      */
-    public GUIListarTeclado() {
+    public GUIListarTeclado(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -110,7 +119,14 @@ public class GUIListarTeclado extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnListar(java.awt.event.ActionEvent evt) {                           
-        // TODO add your handling code here:
+        List<Teclado> listaTeclados = servicioInstrumento.listarTeclados();
+        DefaultTableModel model = (DefaultTableModel) tblListarTeclado.getModel();
+        model.setRowCount(0);
+        for(Teclado teclado : listaTeclados)
+        {
+            model.addRow(new Object[]{teclado.getCodigo(), teclado.getNombre(), teclado.getMarca(), teclado.getPrecio(),
+                    teclado.getStock(),teclado.getNumeroTeclas(), teclado.isEsDigital() ? "Si" : "No", teclado.getSensibilidad()});
+        }
     }                          
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {                           
@@ -118,40 +134,7 @@ public class GUIListarTeclado extends javax.swing.JFrame {
         dispose();
     }                          
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIListarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIListarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIListarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIListarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIListarTeclado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton btnCerrar;

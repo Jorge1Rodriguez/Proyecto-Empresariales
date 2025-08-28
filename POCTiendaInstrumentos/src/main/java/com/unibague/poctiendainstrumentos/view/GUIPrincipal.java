@@ -297,7 +297,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemActualizarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarTecladoActionPerformed
         // TODO add your handling code here:
-        GUIActualizarTeclado gui = new GUIActualizarTeclado();
+        GUIActualizarTeclado gui = new GUIActualizarTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemActualizarTecladoActionPerformed
 
@@ -309,7 +309,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemAgregarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarTecladoActionPerformed
         // TODO add your handling code here:
-        GUICrearTeclado gui = new GUICrearTeclado();
+        GUICrearTeclado gui = new GUICrearTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarTecladoActionPerformed
 
@@ -321,7 +321,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemListarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarTecladoActionPerformed
         // TODO add your handling code here:
-        GUIListarTeclado gui = new GUIListarTeclado();
+        GUIListarTeclado gui = new GUIListarTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarTecladoActionPerformed
 

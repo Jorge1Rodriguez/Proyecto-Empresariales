@@ -4,16 +4,23 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Teclado;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
  */
 public class GUIActualizarTeclado extends javax.swing.JFrame {
+    
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIActualizarTeclado
      */
-    public GUIActualizarTeclado() {
+    public GUIActualizarTeclado(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -193,47 +200,55 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrar
 
     private void btnActualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank() || txtMarca.getText().isBlank() || txtPrecio.getText().isBlank()
+                || txtStock.getText().isBlank() || txtNumTeclas.getText().isBlank() || txtDigitalAnalogico.getText().isBlank() || txtSensibilidad.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                
+                Teclado teclado = new Teclado(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
+                        Integer.parseInt(txtStock.getText()), Integer.parseInt(txtNumTeclas.getText()), txtCodigo.getText().equalsIgnoreCase("digital") ? true : false, txtSensibilidad.getText());
+                servicioInstrumento.editarInstrumento(txtCodigo.getText(), teclado);
+                JOptionPane.showMessageDialog(this, "Teclado actualizado correctamente");
+                txtCodigo.setEditable(true);
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtNumTeclas.setText("");
+                txtDigitalAnalogico.setText("");
+                txtSensibilidad.setText("");
+                
+            } catch (RuntimeException e) {
+                
+                JOptionPane.showMessageDialog(this, "El precio, stock y numero de teclas debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
     }//GEN-LAST:event_btnActualizar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código del teclado a actualizar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Teclado tecladoActualizar = (Teclado) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (tecladoActualizar != null) {
+                txtCodigo.setEditable(false);
+                txtNombre.setText(tecladoActualizar.getNombre());
+                txtMarca.setText(tecladoActualizar.getMarca());
+                txtPrecio.setText(Double.toString(tecladoActualizar.getPrecio()));
+                txtStock.setText(Integer.toString(tecladoActualizar.getStock()));
+                txtNumTeclas.setText(Integer.toString(tecladoActualizar.getNumeroTeclas()));
+                txtDigitalAnalogico.setText(tecladoActualizar.isEsDigital() ? "Digital" : "Analogico");
+                txtSensibilidad.setText(tecladoActualizar.getSensibilidad());
+            } else {
+                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        }
     }//GEN-LAST:event_btnBuscar
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIActualizarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIActualizarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIActualizarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIActualizarTeclado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIActualizarTeclado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
