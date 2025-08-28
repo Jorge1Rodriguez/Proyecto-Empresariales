@@ -95,7 +95,7 @@
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtNumTeclas" alignment="1" pref="237" max="32767" attributes="0"/>
+                          <Component id="txtTipo" alignment="1" pref="237" max="32767" attributes="0"/>
                           <Component id="txtStock" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtPrecio" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtMarca" alignment="1" max="32767" attributes="0"/>
@@ -146,7 +146,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumTeclas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -210,7 +210,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtStock">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumTeclas">
+        <Component class="javax.swing.JTextField" name="txtTipo">
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnSi">
           <Properties>

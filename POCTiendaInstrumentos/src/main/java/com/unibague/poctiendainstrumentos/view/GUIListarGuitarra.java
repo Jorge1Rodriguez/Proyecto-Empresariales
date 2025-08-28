@@ -4,18 +4,22 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Instrumento;
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gerca
  */
 public class GUIListarGuitarra extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIListarGuitarra.class.getName());
-
-    /**
-     * Creates new form GUIActualizarStock
-     */
-    public GUIListarGuitarra() {
+    private IServicioInstrumento servicioInstrumento;
+    
+    public GUIListarGuitarra(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -31,7 +35,7 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblListarGuitarra = new javax.swing.JTable();
         btnCerrar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
 
@@ -40,7 +44,7 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(660, 354));
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListarGuitarra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,7 +67,7 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblListarGuitarra);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,39 +130,23 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
+        List<Guitarra> listaGuitarras = servicioInstrumento.listarGuitarras();
+        DefaultTableModel model = (DefaultTableModel) tblListarGuitarra.getModel();
+        model.setRowCount(0);
+        for(Guitarra guitarra : listaGuitarras)
+        {
+            model.addRow(new Object[]{guitarra.getCodigo(), guitarra.getNombre(), guitarra.getMarca(), guitarra.getPrecio(),
+                    guitarra.getStock(),guitarra.getTipo(),  guitarra.getMaterialCuerpo(), guitarra.getFundas().isEmpty()? "No":"Si"});
+        }
     }//GEN-LAST:event_btnListarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new GUIListarGuitarra().setVisible(true));
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnListar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblListarGuitarra;
     // End of variables declaration//GEN-END:variables
 }

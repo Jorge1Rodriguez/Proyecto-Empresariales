@@ -4,20 +4,30 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
  */
 public class GUICrearGuitarra extends javax.swing.JFrame {
 
+    GUIAgregarFunda gui;
+    
+    private IServicioInstrumento servicioInstrumento;
+    
     /**
      * Creates new form GUICrearTeclado
      */
-    public GUICrearGuitarra() {
+    public GUICrearGuitarra(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         btnGroupDigitalAnalogico.add(rbtnSi);
         btnGroupDigitalAnalogico.add(rbtnNo);
         setLocationRelativeTo(null);
+        gui = new GUIAgregarFunda();
     }
 
     /**
@@ -45,7 +55,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
         txtMarca = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtStock = new javax.swing.JTextField();
-        txtNumTeclas = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
         rbtnSi = new javax.swing.JRadioButton();
         rbtnNo = new javax.swing.JRadioButton();
         lblFunda = new javax.swing.JLabel();
@@ -117,7 +127,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(pnCrearTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCrearTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNumTeclas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                        .addComponent(txtTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                         .addComponent(txtStock, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -157,7 +167,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnCrearTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipo)
-                    .addComponent(txtNumTeclas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnCrearTecladoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMaterial)
@@ -200,60 +210,56 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrear(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank() || txtMarca.getText().isBlank() || txtPrecio.getText().isBlank()
+                || txtStock.getText().isBlank() || txtTipo.getText().isBlank() || txtMaterialCuerpo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else if (!rbtnSi.isSelected() && !rbtnNo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Selecciona si tiene funda o no", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                if (servicioInstrumento.buscarInstrumento(txtCodigo.getText()) == null) {
+                    Guitarra guitarra = new Guitarra(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
+                            Integer.parseInt(txtStock.getText()), txtTipo.getText(), txtMaterialCuerpo.getText());
+                    servicioInstrumento.agregarInstrumento(guitarra);
+                    JOptionPane.showMessageDialog(this, "Guitarra agregada correctamente");
+                    txtCodigo.setText("");
+                    txtNombre.setText("");
+                    txtMarca.setText("");
+                    txtPrecio.setText("");
+                    txtStock.setText("");
+                    txtTipo.setText("");
+                    txtMaterialCuerpo.setText("");
+                    btnGroupDigitalAnalogico.clearSelection();
+                } else {
+                    JOptionPane.showMessageDialog(this, "La guitarra que intentas agregar ya existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (RuntimeException e) {
+
+                JOptionPane.showMessageDialog(this, "El precio y stock debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
         
     }//GEN-LAST:event_btnCrear
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
-        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCerrar
 
     private void rbtnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSiActionPerformed
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "No se ha digitado el codigo de la guitarra", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            btnGroupDigitalAnalogico.clearSelection();
+        }else{
+            gui.setTxtCodigo(txtCodigo.getText());
+            gui.setVisible(true);
+        }
     }//GEN-LAST:event_rbtnSiActionPerformed
 
     private void rbtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNoActionPerformed
-        // TODO add your handling code here:
+        gui.dispose();
     }//GEN-LAST:event_rbtnNoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUICrearGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUICrearGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUICrearGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUICrearGuitarra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUICrearGuitarra().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
@@ -274,8 +280,8 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtMaterialCuerpo;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNumTeclas;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

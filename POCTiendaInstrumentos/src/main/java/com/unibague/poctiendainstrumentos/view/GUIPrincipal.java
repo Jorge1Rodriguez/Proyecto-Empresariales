@@ -234,7 +234,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
-        JOptionPane.showMessageDialog(this, "Desarrollado por:\nGerman Castellanos\nJuan Lozano\nDavid Orjuela\nJorge Rodriguez");
+        JOptionPane.showMessageDialog(this, "Desarrollado por:\nGerman Castellanos\nDavid Orjuela\nJorge Rodriguez");
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     private void jMenuItemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarActionPerformed
@@ -261,13 +261,13 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAgregarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarGuitarraActionPerformed
-        GUICrearGuitarra gui = new GUICrearGuitarra();
+        GUICrearGuitarra gui = new GUICrearGuitarra(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarGuitarraActionPerformed
 
     private void jMenuItemActualizarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarGuitarraActionPerformed
         // TODO add your handling code here:
-        GUIActualizarGuitarra gui = new GUIActualizarGuitarra();
+        GUIActualizarGuitarra gui = new GUIActualizarGuitarra(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemActualizarGuitarraActionPerformed
 
@@ -286,7 +286,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemListarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarGuitarraActionPerformed
         // TODO add your handling code here:
-        GUIListarGuitarra gui = new GUIListarGuitarra();
+        GUIListarGuitarra gui = new GUIListarGuitarra(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemListarGuitarraActionPerformed
 
