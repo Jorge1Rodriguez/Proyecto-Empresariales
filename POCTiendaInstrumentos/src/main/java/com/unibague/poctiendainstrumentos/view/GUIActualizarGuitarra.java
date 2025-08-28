@@ -62,23 +62,11 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Marca");
 
         jLabel4.setText("Precio");
 
         jLabel5.setText("Stock");
-
-        txtStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStockActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Tipo");
 
@@ -162,6 +150,11 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
         });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,22 +202,46 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
                 txtStock.setText(Integer.toString(guitarraActualizar.getStock()));
                 txtTipo.setText(guitarraActualizar.getTipo());
                 txtMaterial.setText(guitarraActualizar.getMaterialCuerpo());
-                
-                
             } else {
                 JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtTipo.setText("");
+                txtMaterial.setText("");
             }
             
         }
     }//GEN-LAST:event_btnBuscar
 
-    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank() || txtMarca.getText().isBlank() || txtPrecio.getText().isBlank()
+                || txtStock.getText().isBlank() || txtTipo.getText().isBlank() || txtMaterial.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                
+                Guitarra guitarra = new Guitarra(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
+                        Integer.parseInt(txtStock.getText()), txtTipo.getText(), txtMaterial.getText());
+                servicioInstrumento.editarInstrumento(txtCodigo.getText(), guitarra);
+                JOptionPane.showMessageDialog(this, "Teclado actualizado correctamente");
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtTipo.setText("");
+                txtMaterial.setText("");
+                
+            } catch (RuntimeException e) {
+                
+                JOptionPane.showMessageDialog(this, "El precio y stock debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     
 

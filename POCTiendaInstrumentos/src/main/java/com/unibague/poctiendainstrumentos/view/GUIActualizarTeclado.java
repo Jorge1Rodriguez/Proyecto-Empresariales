@@ -241,6 +241,14 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
                 txtSensibilidad.setText(tecladoActualizar.getSensibilidad());
             } else {
                 JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtNumTeclas.setText("");
+                txtDigitalAnalogico.setText("");
+                txtSensibilidad.setText("");
             }
             
         }
