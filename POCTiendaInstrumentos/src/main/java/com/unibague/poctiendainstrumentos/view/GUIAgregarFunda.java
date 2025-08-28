@@ -4,6 +4,10 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Funda;
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -11,13 +15,15 @@ import javax.swing.JTextField;
  * @author gerca
  */
 public class GUIAgregarFunda extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIAgregarFunda.class.getName());
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIGuitarra
      */
-    public GUIAgregarFunda() {
+    public GUIAgregarFunda(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -160,7 +166,24 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        if (txtCodFunda.getText().isBlank() || txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (guitarra != null) {
+                guitarra.agregarFunda(new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra));
+            } else {
+                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        txtCodigo.setText("");
+        txtCodFunda.setText("");
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        
+        
+        
+        JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -175,9 +198,7 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         txtCodigo.setText(Codigo);
         txtCodigo.setEditable(false);
     }
-    
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

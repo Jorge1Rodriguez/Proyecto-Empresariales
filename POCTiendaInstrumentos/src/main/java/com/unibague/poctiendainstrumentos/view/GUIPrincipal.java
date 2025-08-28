@@ -249,7 +249,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemAgregarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarFundaActionPerformed
         // TODO add your handling code here:
-        GUIAgregarFunda gui = new GUIAgregarFunda();
+        GUIAgregarFunda gui = new GUIAgregarFunda(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarFundaActionPerformed
 
@@ -283,7 +283,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemEliminarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarFundaActionPerformed
         // TODO add your handling code here:
-        GUIEliminarFunda gui = new GUIEliminarFunda();
+        GUIEliminarFunda gui = new GUIEliminarFunda(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarFundaActionPerformed
 
