@@ -10,7 +10,7 @@ package com.unibague.poctiendainstrumentos.model;
  */
 public interface IProgramable {
 
-    void guardarPreset(String nombre);
+    String guardarPreset(String nombre);
 
-    void cargarPreset(String nombre);
+    String cargarPreset(String nombre);
 }

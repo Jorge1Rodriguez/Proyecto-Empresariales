@@ -303,7 +303,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBuscarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarTecladoActionPerformed
         // TODO add your handling code here
-        GUIBuscarTeclado gui = new GUIBuscarTeclado();
+        GUIBuscarTeclado gui = new GUIBuscarTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemBuscarTecladoActionPerformed
 
@@ -315,7 +315,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemEliminarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarTecladoActionPerformed
         // TODO add your handling code here:
-        GUIEliminarTeclado gui = new GUIEliminarTeclado();
+        GUIEliminarTeclado gui = new GUIEliminarTeclado(servicioInstrumento);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarTecladoActionPerformed
 
