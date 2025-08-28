@@ -4,6 +4,9 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Guitarra;
+
+import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,10 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class GUIEliminarGuitarra extends javax.swing.JFrame {
 
+    private IServicioInstrumento servicioInstrumento;
+
     /**
      * Creates new form GUIEliminarTeclado
      */
-    public GUIEliminarGuitarra() {
+    public GUIEliminarGuitarra(IServicioInstrumento servicioInstrumento) {
+        this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -192,7 +198,25 @@ public class GUIEliminarGuitarra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodigo.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código de la guitarra a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarraBuscar = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (guitarraBuscar != null) {
+                txtCodigo.setEditable(false);
+                txtNombre.setText(guitarraBuscar.getNombre());
+                txtMarca.setText(guitarraBuscar.getMarca());
+                txtPrecio.setText(Double.toString(guitarraBuscar.getPrecio()));
+                txtStock.setText(Integer.toString(guitarraBuscar.getStock()));
+                txtTipo.setText(guitarraBuscar.getTipo());
+                txtMaterial.setText(guitarraBuscar.getMaterialCuerpo());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            }
+
+        }
     }//GEN-LAST:event_btnBuscar
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
@@ -202,19 +226,25 @@ public class GUIEliminarGuitarra extends javax.swing.JFrame {
 
     private void btnBorrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar
         // TODO add your handling code here:
-        int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar el teclado buscado?", "Confirmación", JOptionPane.YES_NO_OPTION);
-        if (borrar == JOptionPane.YES_OPTION){
-            
-            //
-            //AQUI VA LA LOGICA DEL BORRADO
-            //
-            
+        int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar la guitarra buscada?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (borrar == JOptionPane.YES_OPTION) {
+
+            servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
+
+            txtCodigo.setEditable(false);
+            txtCodigo.setText("");
+            txtNombre.setText("");
+            txtMarca.setText("");
+            txtPrecio.setText("");
+            txtStock.setText("");
+            txtTipo.setText("");
+            txtMaterial.setText("");
+
             JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
-            
+
         }
     }//GEN-LAST:event_btnBorrar
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;

@@ -222,15 +222,6 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
                 txtDigitalAnalogico.setText(tecladoBuscar.isEsDigital() ? "Digital" : "Analogico");
                 txtSensibilidad.setText(tecladoBuscar.getSensibilidad());
 
-                txtCodigo.setText("");
-                txtNombre.setText("");
-                txtMarca.setText("");
-                txtPrecio.setText("");
-                txtStock.setText("");
-                txtNumTeclas.setText("");
-                txtDigitalAnalogico.setText("");
-                txtSensibilidad.setText("");
-
             } else {
                 JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
@@ -249,7 +240,14 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
         if (borrar == JOptionPane.YES_OPTION) {
 
             servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
-
+            txtCodigo.setText("");
+            txtNombre.setText("");
+            txtMarca.setText("");
+            txtPrecio.setText("");
+            txtStock.setText("");
+            txtNumTeclas.setText("");
+            txtDigitalAnalogico.setText("");
+            txtSensibilidad.setText("");
             JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
 
         }

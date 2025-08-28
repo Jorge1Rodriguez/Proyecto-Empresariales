@@ -16,11 +16,13 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
 
     
     private IServicioInstrumento servicioInstrumento;
+    private GUIListarFundas gui;
     /**
      * Creates new form GUIBuscarTeclado
      */
     public GUIBuscarGuitarra(IServicioInstrumento servicioInstrumento) {
         this.servicioInstrumento = servicioInstrumento;
+        this.gui = new GUIListarFundas(this);
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -193,21 +195,21 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
         if (txtCodigo.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Ingrese el código de la guitarra a buscar", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
-            Guitarra guitarraActualizar = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
-            if (guitarraActualizar != null) {
-                txtCodigo.setEditable(false);
-                txtNombre.setText(guitarraActualizar.getNombre());
-                txtMarca.setText(guitarraActualizar.getMarca());
-                txtPrecio.setText(Double.toString(guitarraActualizar.getPrecio()));
-                txtStock.setText(Integer.toString(guitarraActualizar.getStock()));
-                txtTipo.setText(guitarraActualizar.getTipo());
-                txtMaterial.setText(guitarraActualizar.getMaterialCuerpo());
-                if(!guitarraActualizar.getFundas().isEmpty())
+            Guitarra guitarraBuscar = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+            if (guitarraBuscar != null) {
+                
+                txtNombre.setText(guitarraBuscar.getNombre());
+                txtMarca.setText(guitarraBuscar.getMarca());
+                txtPrecio.setText(Double.toString(guitarraBuscar.getPrecio()));
+                txtStock.setText(Integer.toString(guitarraBuscar.getStock()));
+                txtTipo.setText(guitarraBuscar.getTipo());
+                txtMaterial.setText(guitarraBuscar.getMaterialCuerpo());
+                if(!guitarraBuscar.getFundas().isEmpty())
                 {
-                    GUIListarFundas gui = new GUIListarFundas(this);
+                    gui.setVisible(true);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 
             }
             

@@ -276,7 +276,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemEliminarGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarGuitarraActionPerformed
         // TODO add your handling code here:
-        GUIEliminarGuitarra gui = new GUIEliminarGuitarra();
+        GUIEliminarGuitarra gui = new GUIEliminarGuitarra(servicioInstrumento);
         gui.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemEliminarGuitarraActionPerformed
