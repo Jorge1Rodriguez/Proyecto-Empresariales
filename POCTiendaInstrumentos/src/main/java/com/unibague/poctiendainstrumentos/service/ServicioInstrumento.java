@@ -52,15 +52,28 @@ public class ServicioInstrumento implements IServicioInstrumento {
      * Colección de instrumentos administrados por el servicio.
      */
     private List<Instrumento> instrumentos;
+    
+    private static ServicioInstrumento instancia;
 
     /**
      * Constructor privado para restringir la creación de instancias
      * (Singleton). Inicializa la lista vacía de instrumentos.
      */
-    public ServicioInstrumento() {
+    private ServicioInstrumento() {
         this.instrumentos = new ArrayList<>();
     }
 
+    
+    public static ServicioInstrumento getInstance()
+    {
+        if(instancia == null)
+        {
+            instancia = new ServicioInstrumento();
+        }
+        return instancia;
+    }
+    
+    
     /**
      * Agrega un nuevo instrumento al servicio.
      *

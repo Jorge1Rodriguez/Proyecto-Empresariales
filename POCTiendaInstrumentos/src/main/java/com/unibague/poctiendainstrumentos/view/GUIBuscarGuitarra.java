@@ -208,6 +208,8 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
                 {
                     gui.setVisible(true);
                 }
+
+               
             } else {
                 JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 

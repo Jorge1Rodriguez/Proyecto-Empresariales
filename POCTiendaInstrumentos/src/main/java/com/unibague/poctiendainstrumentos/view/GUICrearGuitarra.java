@@ -6,7 +6,13 @@ package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,10 +20,10 @@ import javax.swing.JOptionPane;
  */
 public class GUICrearGuitarra extends javax.swing.JFrame {
 
-    GUIAgregarFunda gui;
-    
+    GUIAgregarFundaGuitarraNueva gui;
+
     private IServicioInstrumento servicioInstrumento;
-    
+
     /**
      * Creates new form GUICrearTeclado
      */
@@ -27,7 +33,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
         btnGroupDigitalAnalogico.add(rbtnSi);
         btnGroupDigitalAnalogico.add(rbtnNo);
         setLocationRelativeTo(null);
-        gui = new GUIAgregarFunda(servicioInstrumento);
+        gui = new GUIAgregarFundaGuitarraNueva(servicioInstrumento, this);
     }
 
     /**
@@ -239,18 +245,19 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
             }
 
         }
-        
+
     }//GEN-LAST:event_btnCrear
+
 
     private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
         dispose();
     }//GEN-LAST:event_btnCerrar
 
     private void rbtnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSiActionPerformed
-        if (txtCodigo.getText().isBlank()){
+        if (txtCodigo.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "No se ha digitado el codigo de la guitarra", "Advertencia", JOptionPane.WARNING_MESSAGE);
             btnGroupDigitalAnalogico.clearSelection();
-        }else{
+        } else {
             gui.setTxtCodigo(txtCodigo.getText());
             gui.setVisible(true);
         }
@@ -259,6 +266,47 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
     private void rbtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNoActionPerformed
         gui.dispose();
     }//GEN-LAST:event_rbtnNoActionPerformed
+
+    public String[] getAtributosGuitarra() {
+
+        return new String[]{txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), txtPrecio.getText(),
+            txtStock.getText(), txtTipo.getText(), txtMaterialCuerpo.getText()};
+    }
+
+    public ButtonGroup getBtnGroupDigitalAnalogico() {
+        return btnGroupDigitalAnalogico;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public JTextField getTxtMarca() {
+        return txtMarca;
+    }
+
+    public JTextField getTxtMaterialCuerpo() {
+        return txtMaterialCuerpo;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JTextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public JTextField getTxtTipo() {
+        return txtTipo;
+    }
+    
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -284,4 +332,5 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
+
 }

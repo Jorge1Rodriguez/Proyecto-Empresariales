@@ -15,16 +15,18 @@ import javax.swing.JTextField;
  *
  * @author gerca
  */
-public class GUIAgregarFunda extends javax.swing.JFrame {
+public class GUIAgregarFundaGuitarraNueva extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIAgregarFunda.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIAgregarFundaGuitarraNueva.class.getName());
     private IServicioInstrumento servicioInstrumento;
+    private GUICrearGuitarra gui;
 
     /**
      * Creates new form GUIGuitarra
      */
-    public GUIAgregarFunda(IServicioInstrumento servicioInstrumento) {
+    public GUIAgregarFundaGuitarraNueva(IServicioInstrumento servicioInstrumento, GUICrearGuitarra gui) {
         this.servicioInstrumento = servicioInstrumento;
+        this.gui = gui;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -167,20 +169,33 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (txtCodFunda.getText().isBlank() || txtCodigo.getText().isBlank()) {
+        if (txtCodFunda.getText().isBlank() || txtNombre.getText().isBlank() || txtPrecio.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
             if (guitarra != null) {
                 guitarra.agregarFunda(new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra));
             } else {
-                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                String[] atributos = gui.getAtributosGuitarra();
+                Guitarra guitarraNueva = new Guitarra(atributos[0], atributos[1], atributos[2],
+                        Double.parseDouble(atributos[3]), Integer.parseInt(atributos[4]), atributos[5], atributos[6]);
+                servicioInstrumento.agregarInstrumento(guitarraNueva);
+                guitarraNueva.agregarFunda(new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra));
             }
         }
         txtCodigo.setText("");
         txtCodFunda.setText("");
         txtNombre.setText("");
         txtPrecio.setText("");
+
+        gui.getTxtCodigo().setText("");
+        gui.getTxtNombre().setText("");
+        gui.getTxtMarca().setText("");
+        gui.getTxtPrecio().setText("");
+        gui.getTxtStock().setText("");
+        gui.getTxtTipo().setText("");
+        gui.getTxtMaterialCuerpo().setText("");
+        gui.getBtnGroupDigitalAnalogico().clearSelection();
 
         JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -203,8 +218,6 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
     }
 
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCerrar;

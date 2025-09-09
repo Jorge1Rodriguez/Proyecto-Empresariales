@@ -19,7 +19,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
      * Creates new form GUIPrincipal
      */
     public GUIPrincipal() {
-        this.servicioInstrumento = new ServicioInstrumento();
+        this.servicioInstrumento = ServicioInstrumento.getInstance();
         initComponents();
         setLocationRelativeTo(null);
     }
