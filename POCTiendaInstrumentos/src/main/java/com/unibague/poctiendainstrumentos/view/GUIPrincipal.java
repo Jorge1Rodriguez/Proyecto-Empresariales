@@ -42,6 +42,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuGuitarra = new javax.swing.JMenu();
         jMenuItemAgregarFunda = new javax.swing.JMenuItem();
         jMenuItemEliminarFunda = new javax.swing.JMenuItem();
+        jMenuItemActualizarFunda = new javax.swing.JMenuItem();
         jMenuItemListarGuitarra = new javax.swing.JMenuItem();
         jMenuItemAgregarGuitarra = new javax.swing.JMenuItem();
         jMenuItemBuscarGuitarra = new javax.swing.JMenuItem();
@@ -104,6 +105,14 @@ public class GUIPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuGuitarra.add(jMenuItemEliminarFunda);
+
+        jMenuItemActualizarFunda.setText("Actualizar Funda");
+        jMenuItemActualizarFunda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemActualizarFundaActionPerformed(evt);
+            }
+        });
+        jMenuGuitarra.add(jMenuItemActualizarFunda);
 
         jMenuItemListarGuitarra.setText("Listar");
         jMenuItemListarGuitarra.addActionListener(new java.awt.event.ActionListener() {
@@ -335,6 +344,10 @@ public class GUIPrincipal extends javax.swing.JFrame {
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemCargaPresetActionPerformed
 
+    private void jMenuItemActualizarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarFundaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemActualizarFundaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +381,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuInstrumento;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItemAcercaDe;
+    private javax.swing.JMenuItem jMenuItemActualizarFunda;
     private javax.swing.JMenuItem jMenuItemActualizarGuitarra;
     private javax.swing.JMenuItem jMenuItemActualizarTeclado;
     private javax.swing.JMenuItem jMenuItemAgregarFunda;
