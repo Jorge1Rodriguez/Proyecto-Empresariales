@@ -135,7 +135,7 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
         model.setRowCount(0);
         for(Guitarra guitarra : listaGuitarras)
         {
-            model.addRow(new Object[]{guitarra.getCodigo(), guitarra.getNombre(), guitarra.getMarca(), guitarra.getPrecio(),
+            model.addRow(new Object[]{guitarra.getCodigo(), guitarra.getNombre(), guitarra.getMarca(), guitarra.calcularValor(),
                     guitarra.getStock(),guitarra.getTipo(),  guitarra.getMaterialCuerpo(), guitarra.getFundas().isEmpty()? "No":"Si"});
         }
     }//GEN-LAST:event_btnListarActionPerformed

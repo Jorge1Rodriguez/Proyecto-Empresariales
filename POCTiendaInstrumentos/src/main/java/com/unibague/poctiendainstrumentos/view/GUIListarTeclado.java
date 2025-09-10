@@ -125,7 +125,7 @@ public class GUIListarTeclado extends javax.swing.JFrame {
         model.setRowCount(0);
         for(Teclado teclado : listaTeclados)
         {
-            model.addRow(new Object[]{teclado.getCodigo(), teclado.getNombre(), teclado.getMarca(), teclado.getPrecio(),
+            model.addRow(new Object[]{teclado.getCodigo(), teclado.getNombre(), teclado.getMarca(), teclado.calcularValor(),
                     teclado.getStock(),teclado.getNumeroTeclas(), teclado.isEsDigital() ? "Si" : "No", teclado.getSensibilidad()});
         }
     }                          

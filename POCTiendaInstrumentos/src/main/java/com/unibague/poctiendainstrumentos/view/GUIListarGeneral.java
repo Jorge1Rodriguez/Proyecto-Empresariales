@@ -118,7 +118,7 @@ public class GUIListarGeneral extends javax.swing.JFrame {
         model.setRowCount(0);
         for(Instrumento instrumento : listaInstrumentos)
         {
-            model.addRow(new Object[]{instrumento.getCodigo(), instrumento.getNombre(), instrumento.getMarca(), instrumento.getPrecio(),
+            model.addRow(new Object[]{instrumento.getCodigo(), instrumento.getNombre(), instrumento.getMarca(), instrumento.calcularValor(),
                     instrumento.getStock(), instrumento instanceof Teclado ? "Teclado" : "Guitarra"});
         }
     }                          
