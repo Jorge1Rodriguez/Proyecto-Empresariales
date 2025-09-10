@@ -17,8 +17,7 @@ import javax.swing.JTextField;
  */
 public class GUIAgregarFunda extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIAgregarFunda.class.getName());
-    private IServicioInstrumento servicioInstrumento;
+     private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIGuitarra
@@ -59,19 +58,7 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
 
         jLabel1.setText("Código Guitarra:");
 
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Nombre:");
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Precio:");
 
@@ -92,7 +79,7 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPrecio)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                     .addComponent(txtCodFunda)
                     .addComponent(txtCodigo))
                 .addContainerGap())
@@ -116,20 +103,20 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCerrar(evt);
             }
         });
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnAgregar(evt);
             }
         });
 
@@ -162,11 +149,11 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
         dispose();
-    }//GEN-LAST:event_btnCerrarActionPerformed
+    }//GEN-LAST:event_btnCerrar
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar
         if (txtCodFunda.getText().isBlank() || txtCodigo.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -183,28 +170,14 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         txtPrecio.setText("");
 
         JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_btnAgregar
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
-    public void setTxtCodigo(String Codigo) {
-        txtCodigo.setText(Codigo);
-        txtCodigo.setEditable(false);
-    }
 
     public JButton getBtnAgregar() {
         return btnAgregar;
     }
 
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCerrar;

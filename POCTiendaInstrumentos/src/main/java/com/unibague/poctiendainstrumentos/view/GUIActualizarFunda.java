@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
  *
  * @author gerca
  */
-public class GUIEliminarFunda extends javax.swing.JFrame {
+public class GUIActualizarFunda extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIEliminarFunda.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIActualizarFunda.class.getName());
     private IServicioInstrumento servicioInstrumento;
 
     /**
@@ -22,7 +22,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
      *
      * @param servicioInstrumento
      */
-    public GUIEliminarFunda(IServicioInstrumento servicioInstrumento) {
+    public GUIActualizarFunda(IServicioInstrumento servicioInstrumento) {
         this.servicioInstrumento = servicioInstrumento;
         initComponents();
         setLocationRelativeTo(null);
@@ -49,7 +49,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         txtCodFunda = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
-        btnBorrar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -59,15 +59,9 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
         lblNombre.setText("Nombre:");
 
-        txtNombre.setEditable(false);
-
-        txtPrecio.setEditable(false);
-
         lblPrecio.setText("Precio:");
 
         lblCodFunda.setText("Código Funda:");
-
-        txtCodGuitarra.setEditable(false);
 
         lblCodGuitarra.setText("Código Guitarra:");
 
@@ -132,14 +126,14 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCerrar(evt);
             }
         });
 
-        btnBorrar.setText("Borrar");
-        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBorrarActionPerformed(evt);
+                btnActualizar(evt);
             }
         });
 
@@ -154,17 +148,17 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCerrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBorrar)))
+                        .addComponent(btnActualizar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBorrar)
+                    .addComponent(btnActualizar)
                     .addComponent(btnCerrar))
                 .addContainerGap())
         );
@@ -172,11 +166,11 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnCerrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrar
         dispose();
-    }//GEN-LAST:event_btnCerrarActionPerformed
+    }//GEN-LAST:event_btnCerrar
 
-    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+    private void btnActualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar
         // TODO add your handling code here:
         int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar la funda buscada?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (borrar == JOptionPane.YES_OPTION) {
@@ -201,7 +195,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La funda se ha borrado exitosamente");
 
         }
-    }//GEN-LAST:event_btnBorrarActionPerformed
+    }//GEN-LAST:event_btnActualizar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
         // TODO add your handling code here:
@@ -210,7 +204,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel4;
