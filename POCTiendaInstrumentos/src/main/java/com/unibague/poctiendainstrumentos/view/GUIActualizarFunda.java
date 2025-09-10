@@ -4,6 +4,7 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import javax.swing.JOptionPane;
@@ -54,7 +55,7 @@ public class GUIActualizarFunda extends javax.swing.JFrame {
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Eliminar funda");
+        setTitle("Actualizar funda");
         setResizable(false);
 
         lblNombre.setText("Nombre:");
@@ -171,36 +172,33 @@ public class GUIActualizarFunda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrar
 
     private void btnActualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar
-        // TODO add your handling code here:
-        int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar la funda buscada?", "Confirmación", JOptionPane.YES_NO_OPTION);
-        if (borrar == JOptionPane.YES_OPTION) {
-            if (txtCodFunda.getText().isBlank() || txtCodGuitarra.getText().isBlank()) {
-                JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            } else {
-                Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodGuitarra.getText());
-                if (guitarra != null) {
-                    if (guitarra.buscarFunda(txtCodFunda.getText()) != null) {
-                        guitarra.eliminarFunda(txtCodFunda.getText());
-                    } else {
-                        JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-            txtCodGuitarra.setText("");
-            txtCodFunda.setText("");
-            txtNombre.setText("");
-            txtPrecio.setText("");
-            JOptionPane.showMessageDialog(null, "La funda se ha borrado exitosamente");
 
-        }
+        
+        
     }//GEN-LAST:event_btnActualizar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+        if (txtCodFunda.getText().isBlank() || txtCodGuitarra.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el codigo de la funda y el de la guitarra a la que pertenece", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodGuitarra.getText());
+            if (guitarra != null) {
+                Funda funda = guitarra.buscarFunda(txtCodFunda.getText());
+                if(funda != null)
+                {
+                    txtCodFunda.setEditable(false);
+                    txtNombre.setText(funda.getNombre());
+                    txtPrecio.setText(Double.toString(funda.getPrecio()));
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnBuscar
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

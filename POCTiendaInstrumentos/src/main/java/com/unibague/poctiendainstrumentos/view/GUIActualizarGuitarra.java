@@ -6,6 +6,7 @@ package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 /**
@@ -203,7 +204,7 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
                 txtTipo.setText(guitarraActualizar.getTipo());
                 txtMaterial.setText(guitarraActualizar.getMaterialCuerpo());
             } else {
-                JOptionPane.showMessageDialog(this, "El teclado no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 txtCodigo.setText("");
                 txtNombre.setText("");
                 txtMarca.setText("");
@@ -226,7 +227,7 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
                 Guitarra guitarra = new Guitarra(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
                         Integer.parseInt(txtStock.getText()), txtTipo.getText(), txtMaterial.getText());
                 servicioInstrumento.editarInstrumento(txtCodigo.getText(), guitarra);
-                JOptionPane.showMessageDialog(this, "Teclado actualizado correctamente");
+                JOptionPane.showMessageDialog(this, "Guitarra actualizado correctamente");
                 txtCodigo.setText("");
                 txtNombre.setText("");
                 txtMarca.setText("");
@@ -235,9 +236,13 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
                 txtTipo.setText("");
                 txtMaterial.setText("");
                 
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
                 
                 JOptionPane.showMessageDialog(this, "El precio y stock debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            catch(NoSuchElementException e)
+            {
+                JOptionPane.showMessageDialog(this, "No existe una guitarra con el codigo: " + txtCodigo.getText(), "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }

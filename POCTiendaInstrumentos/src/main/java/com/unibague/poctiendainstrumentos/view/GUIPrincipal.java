@@ -345,7 +345,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCargaPresetActionPerformed
 
     private void jMenuItemActualizarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarFundaActionPerformed
-        // TODO add your handling code here:
+        GUIActualizarFunda gui = new GUIActualizarFunda(servicioInstrumento);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuItemActualizarFundaActionPerformed
 
     /**

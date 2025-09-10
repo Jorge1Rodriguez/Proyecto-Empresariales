@@ -7,6 +7,7 @@ package com.unibague.poctiendainstrumentos.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -53,6 +54,19 @@ public class Guitarra extends Instrumento {
             }
         } 
         return null;
+    }
+    
+    public void editarFunda(String codigo, Funda funda)
+    {
+        Funda fundaAEditar = buscarFunda(codigo);
+        if(fundaAEditar != null)
+        {
+            fundas.set(fundas.indexOf(fundaAEditar), funda);
+        }
+        else
+        {
+            throw new NoSuchElementException("No se encontró una funda con el código: " + codigo);
+        }
     }
 
     //getters y setters

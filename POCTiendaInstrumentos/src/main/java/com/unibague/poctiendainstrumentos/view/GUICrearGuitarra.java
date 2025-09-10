@@ -18,7 +18,7 @@ import javax.swing.JTextField;
  *
  * @author david
  */
-public class GUICrearGuitarra extends javax.swing.JFrame {
+public class GUICrearGuitarra extends javax.swing.JFrame{
 
     GUIAgregarFundaGuitarraNueva gui;
 
@@ -215,6 +215,7 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnCrear(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear
         if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank() || txtMarca.getText().isBlank() || txtPrecio.getText().isBlank()
                 || txtStock.getText().isBlank() || txtTipo.getText().isBlank() || txtMaterialCuerpo.getText().isBlank()) {
@@ -304,10 +305,6 @@ public class GUICrearGuitarra extends javax.swing.JFrame {
     public JTextField getTxtTipo() {
         return txtTipo;
     }
-    
-    
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

@@ -207,6 +207,7 @@ public class GUIBuscarGuitarra extends javax.swing.JFrame {
                 if(!guitarraBuscar.getFundas().isEmpty())
                 {
                     gui.setVisible(true);
+                    gui.setLocation(this.getX() + this.getWidth(), this.getY());
                 }
 
                
