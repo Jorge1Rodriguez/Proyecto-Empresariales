@@ -7,6 +7,7 @@ package com.unibague.poctiendainstrumentos.view;
 import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 /**
@@ -172,9 +173,29 @@ public class GUIActualizarFunda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrar
 
     private void btnActualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar
+        if (txtCodFunda.getText().isBlank() || txtCodGuitarra.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el codigo de la funda y el de la guitarra a la que pertenece", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodGuitarra.getText());
+            if (guitarra != null) {
+                try {
+                    Funda fundaActualizada = new Funda(txtCodFunda.getText(), txtNombre.getText(),
+                            Double.parseDouble(txtPrecio.getText()), guitarra);
+                    guitarra.editarFunda(txtCodFunda.getText(), fundaActualizada);
+                    JOptionPane.showMessageDialog(this, "Funda actualizada correctamente");
 
-        
-        
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "El precio debe ser un numero", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                } catch (NoSuchElementException e) {
+                    JOptionPane.showMessageDialog(this, "No existe una funda con el codigo: " + txtCodFunda.getText(), "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La guitarra a la que intentas agregarle la funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnActualizar
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
@@ -184,17 +205,19 @@ public class GUIActualizarFunda extends javax.swing.JFrame {
             Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodGuitarra.getText());
             if (guitarra != null) {
                 Funda funda = guitarra.buscarFunda(txtCodFunda.getText());
-                if(funda != null)
-                {
+                if (funda != null) {
                     txtCodFunda.setEditable(false);
                     txtNombre.setText(funda.getNombre());
                     txtPrecio.setText(Double.toString(funda.getPrecio()));
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    txtCodFunda.setEditable(true);
+                    txtCodFunda.setText("");
+                    txtCodGuitarra.setText("");
+                    txtNombre.setText("");
+                    txtPrecio.setText("");
                 }
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
         }

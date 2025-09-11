@@ -6,6 +6,7 @@ package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.model.Teclado;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 /**
@@ -239,17 +240,20 @@ public class GUIEliminarTeclado extends javax.swing.JFrame {
         int borrar = JOptionPane.showConfirmDialog(null, "¿Estás seguro que deseas eliminar el teclado buscado?", "Confirmación", JOptionPane.YES_NO_OPTION);
         if (borrar == JOptionPane.YES_OPTION) {
 
-            servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
-            txtCodigo.setText("");
-            txtNombre.setText("");
-            txtMarca.setText("");
-            txtPrecio.setText("");
-            txtStock.setText("");
-            txtNumTeclas.setText("");
-            txtDigitalAnalogico.setText("");
-            txtSensibilidad.setText("");
-            JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
-
+            try {
+                servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
+                txtCodigo.setText("");
+                txtNombre.setText("");
+                txtMarca.setText("");
+                txtPrecio.setText("");
+                txtStock.setText("");
+                txtNumTeclas.setText("");
+                txtDigitalAnalogico.setText("");
+                txtSensibilidad.setText("");
+                JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
+            } catch (NoSuchElementException e) {
+                JOptionPane.showMessageDialog(this, "No existe un teclado con el codigo: " + txtCodigo.getText(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnBorrar
 

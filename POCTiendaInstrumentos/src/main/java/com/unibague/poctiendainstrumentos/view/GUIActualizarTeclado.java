@@ -6,6 +6,7 @@ package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.model.Teclado;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 /**
@@ -218,9 +219,13 @@ public class GUIActualizarTeclado extends javax.swing.JFrame {
                 txtDigitalAnalogico.setText("");
                 txtSensibilidad.setText("");
                 
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
                 
                 JOptionPane.showMessageDialog(this, "El precio, stock y numero de teclas debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            catch(NoSuchElementException e)
+            {
+                JOptionPane.showMessageDialog(this, "No existe un teclado con el codigo: " + txtCodigo.getText(), "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }
