@@ -9,6 +9,7 @@ import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import com.unibague.poctiendainstrumentos.service.ServicioObserver;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -150,11 +151,16 @@ public class GUIListarFundas extends javax.swing.JFrame implements IObserver {
     }//GEN-LAST:event_formWindowClosing
 
     private void listar() {
-        List<Funda> listaFundas = gui.getGuitarra().getFundas();
+        Guitarra guitarra = gui.getGuitarra();
         DefaultTableModel model = (DefaultTableModel) tblFundas.getModel();
-        model.setRowCount(0);
-        for (Funda funda : listaFundas) {
-            model.addRow(new Object[]{funda.getCodigo(), funda.getNombre(), funda.getPrecio()});
+        if (guitarra != null) {
+            List<Funda> listaFundas = guitarra.getFundas();
+            model.setRowCount(0);
+            for (Funda funda : listaFundas) {
+                model.addRow(new Object[]{funda.getCodigo(), funda.getNombre(), funda.getPrecio()});
+            }
+        } else {
+            model.setRowCount(0);
         }
     }
 

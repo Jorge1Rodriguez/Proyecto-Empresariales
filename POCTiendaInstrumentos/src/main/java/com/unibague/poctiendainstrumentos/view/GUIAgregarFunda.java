@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  */
 public class GUIAgregarFunda extends javax.swing.JFrame {
 
-     private IServicioInstrumento servicioInstrumento;
+    private IServicioInstrumento servicioInstrumento;
 
     /**
      * Creates new form GUIGuitarra
@@ -157,12 +157,21 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         if (txtCodFunda.getText().isBlank() || txtCodigo.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Complete los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
-            Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
-            if (guitarra != null) {
-                guitarra.agregarFunda(new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra));
-                JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            try {
+                Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
+                if (guitarra != null) {
+
+                    if (guitarra.buscarFunda(txtCodFunda.getText()) == null) {
+                        Funda funda = new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra);
+                        guitarra.agregarFunda(funda);
+                        JOptionPane.showMessageDialog(this, "Funda agregada correctamente");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "La funda ya existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El precio debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         txtCodigo.setText("");
@@ -170,7 +179,6 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         txtNombre.setText("");
         txtPrecio.setText("");
     }//GEN-LAST:event_btnAgregar
-
 
     public JButton getBtnAgregar() {
         return btnAgregar;
