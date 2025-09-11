@@ -4,6 +4,7 @@
  */
 package com.unibague.poctiendainstrumentos.view;
 
+import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import javax.swing.JOptionPane;
@@ -66,8 +67,6 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
         lblPrecio.setText("Precio:");
 
         lblCodFunda.setText("Código Funda:");
-
-        txtCodGuitarra.setEditable(false);
 
         lblCodGuitarra.setText("Código Guitarra:");
 
@@ -205,8 +204,30 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
 
-    }//GEN-LAST:event_btnBuscar
+        if (txtCodFunda.getText().isBlank() || txtCodGuitarra.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el codigo de la funda y el de la guitarra a la que pertenece", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodGuitarra.getText());
+            if (guitarra != null) {
+                Funda funda = guitarra.buscarFunda(txtCodFunda.getText());
+                if (funda != null) {
+                    txtCodGuitarra.setEditable(false);
+                    txtCodGuitarra.setText(funda.getGuitarra().getCodigo());
+                    txtNombre.setText(funda.getNombre());
+                    txtPrecio.setText(Double.toString(funda.getPrecio()));
+                } else {
+                    JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
 
+                    txtCodFunda.setText("");
+                    txtCodGuitarra.setText("");
+                    txtNombre.setText("");
+                    txtPrecio.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La funda no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnBuscar
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
