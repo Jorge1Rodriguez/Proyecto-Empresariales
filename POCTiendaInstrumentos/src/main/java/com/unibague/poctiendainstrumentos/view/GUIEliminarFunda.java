@@ -204,7 +204,7 @@ public class GUIEliminarFunda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnBuscar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnBuscar
 
 

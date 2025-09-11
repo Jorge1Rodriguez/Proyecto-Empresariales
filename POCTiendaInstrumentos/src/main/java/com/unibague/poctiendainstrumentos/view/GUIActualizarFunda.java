@@ -207,6 +207,7 @@ public class GUIActualizarFunda extends javax.swing.JFrame {
                 Funda funda = guitarra.buscarFunda(txtCodFunda.getText());
                 if (funda != null) {
                     txtCodFunda.setEditable(false);
+                    txtCodGuitarra.setEditable(false);
                     txtNombre.setText(funda.getNombre());
                     txtPrecio.setText(Double.toString(funda.getPrecio()));
                 } else {
