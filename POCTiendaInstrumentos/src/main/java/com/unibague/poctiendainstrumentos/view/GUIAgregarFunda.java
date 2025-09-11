@@ -160,6 +160,7 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
             Guitarra guitarra = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
             if (guitarra != null) {
                 guitarra.agregarFunda(new Funda(txtCodFunda.getText(), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), guitarra));
+                JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
             } else {
                 JOptionPane.showMessageDialog(this, "La guitarra no existe", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
@@ -168,8 +169,6 @@ public class GUIAgregarFunda extends javax.swing.JFrame {
         txtCodFunda.setText("");
         txtNombre.setText("");
         txtPrecio.setText("");
-
-        JOptionPane.showMessageDialog(null, "La funda se ha agregado exitosamente");
     }//GEN-LAST:event_btnAgregar
 
 

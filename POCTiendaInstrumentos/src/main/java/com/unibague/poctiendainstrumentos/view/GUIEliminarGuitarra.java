@@ -240,7 +240,7 @@ public class GUIEliminarGuitarra extends javax.swing.JFrame {
                 txtTipo.setText("");
                 txtMaterial.setText("");
 
-                JOptionPane.showMessageDialog(null, "El teclado se ha borrado exitosamente");
+                JOptionPane.showMessageDialog(null, "La guitarra se ha borrado exitosamente");
             } catch (NoSuchElementException e) {
                 JOptionPane.showMessageDialog(this, "No existe una guitarra con el codigo: " + txtCodigo.getText(), "Error", JOptionPane.ERROR_MESSAGE);
             }

@@ -223,9 +223,10 @@ public class GUIActualizarGuitarra extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Completa todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                
+                Guitarra guitarraActual = (Guitarra)servicioInstrumento.buscarInstrumento(txtCodigo.getText());
                 Guitarra guitarra = new Guitarra(txtCodigo.getText(), txtNombre.getText(), txtMarca.getText(), Double.parseDouble(txtPrecio.getText()),
                         Integer.parseInt(txtStock.getText()), txtTipo.getText(), txtMaterial.getText());
+                guitarra.setFundas(guitarraActual.getFundas());
                 servicioInstrumento.editarInstrumento(txtCodigo.getText(), guitarra);
                 JOptionPane.showMessageDialog(this, "Guitarra actualizado correctamente");
                 txtCodigo.setText("");

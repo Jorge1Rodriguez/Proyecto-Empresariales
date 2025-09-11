@@ -29,15 +29,15 @@ public class ServicioObserver {
     }
 
     public void actualizar() {
-        for (IObserver gui : ventanas) {
-            gui.actualizar();
+        if (!ventanas.isEmpty()) {
+            for (IObserver gui : ventanas) {
+                gui.actualizar();
+            }
         }
     }
-    
-    public static ServicioObserver getInstance()
-    {
-        if(instancia == null)
-        {
+
+    public static ServicioObserver getInstance() {
+        if (instancia == null) {
             instancia = new ServicioObserver();
         }
         return instancia;
