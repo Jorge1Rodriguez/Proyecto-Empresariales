@@ -43,30 +43,37 @@
                 <Property name="text" type="java.lang.String" value="Guitarra"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarFunda">
+                <Menu class="javax.swing.JMenu" name="jMenuFundas">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Agregar Funda"/>
+                    <Property name="text" type="java.lang.String" value="Fundas"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAgregarFundaActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarFunda">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar Funda"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEliminarFundaActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemActualizarFunda">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Actualizar Funda"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemActualizarFundaActionPerformed"/>
-                  </Events>
-                </MenuItem>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarFunda">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Agregar Funda"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAgregarFundaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItemActualizarFunda">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Actualizar Funda"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemActualizarFundaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarFunda">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Eliminar Funda"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEliminarFundaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemListarGuitarra">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Listar"/>

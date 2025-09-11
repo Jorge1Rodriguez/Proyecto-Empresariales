@@ -10,6 +10,7 @@
  */
 package com.unibague.poctiendainstrumentos.service;
 
+import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.model.Instrumento;
 import com.unibague.poctiendainstrumentos.model.Teclado;
@@ -134,6 +135,7 @@ public class ServicioInstrumento implements IServicioInstrumento {
         }
         return teclados;
     }
+    
 
     /**
      * Busca un instrumento en la colección, identificado por su código.

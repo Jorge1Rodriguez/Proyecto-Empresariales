@@ -40,9 +40,10 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuInstrumento = new javax.swing.JMenu();
         jMenuItemListar = new javax.swing.JMenuItem();
         jMenuGuitarra = new javax.swing.JMenu();
+        jMenuFundas = new javax.swing.JMenu();
         jMenuItemAgregarFunda = new javax.swing.JMenuItem();
-        jMenuItemEliminarFunda = new javax.swing.JMenuItem();
         jMenuItemActualizarFunda = new javax.swing.JMenuItem();
+        jMenuItemEliminarFunda = new javax.swing.JMenuItem();
         jMenuItemListarGuitarra = new javax.swing.JMenuItem();
         jMenuItemAgregarGuitarra = new javax.swing.JMenuItem();
         jMenuItemBuscarGuitarra = new javax.swing.JMenuItem();
@@ -90,21 +91,15 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuGuitarra.setText("Guitarra");
 
+        jMenuFundas.setText("Fundas");
+
         jMenuItemAgregarFunda.setText("Agregar Funda");
         jMenuItemAgregarFunda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemAgregarFundaActionPerformed(evt);
             }
         });
-        jMenuGuitarra.add(jMenuItemAgregarFunda);
-
-        jMenuItemEliminarFunda.setText("Eliminar Funda");
-        jMenuItemEliminarFunda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEliminarFundaActionPerformed(evt);
-            }
-        });
-        jMenuGuitarra.add(jMenuItemEliminarFunda);
+        jMenuFundas.add(jMenuItemAgregarFunda);
 
         jMenuItemActualizarFunda.setText("Actualizar Funda");
         jMenuItemActualizarFunda.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +107,17 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 jMenuItemActualizarFundaActionPerformed(evt);
             }
         });
-        jMenuGuitarra.add(jMenuItemActualizarFunda);
+        jMenuFundas.add(jMenuItemActualizarFunda);
+
+        jMenuItemEliminarFunda.setText("Eliminar Funda");
+        jMenuItemEliminarFunda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarFundaActionPerformed(evt);
+            }
+        });
+        jMenuFundas.add(jMenuItemEliminarFunda);
+
+        jMenuGuitarra.add(jMenuFundas);
 
         jMenuItemListarGuitarra.setText("Listar");
         jMenuItemListarGuitarra.addActionListener(new java.awt.event.ActionListener() {
@@ -378,6 +383,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuFundas;
     private javax.swing.JMenu jMenuGuitarra;
     private javax.swing.JMenu jMenuInstrumento;
     private javax.swing.JMenuItem jMenuItem14;
