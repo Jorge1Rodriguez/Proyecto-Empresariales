@@ -4,6 +4,7 @@
  */
 package com.unibague.poctiendainstrumentos.model;
 
+import com.unibague.poctiendainstrumentos.service.ServicioObserver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,11 +41,13 @@ public class Guitarra extends Instrumento {
 
     public void agregarFunda(Funda funda) {
         fundas.add(funda);
+        ServicioObserver.getInstance().actualizar();
     }
 
     public void eliminarFunda(String codigo) {
         Funda funda = buscarFunda(codigo);
         fundas.remove(funda);
+        ServicioObserver.getInstance().actualizar();
     }
 
     public Funda buscarFunda(String codigo) {
@@ -62,6 +65,7 @@ public class Guitarra extends Instrumento {
         if(fundaAEditar != null)
         {
             fundas.set(fundas.indexOf(fundaAEditar), funda);
+            ServicioObserver.getInstance().actualizar();
         }
         else
         {

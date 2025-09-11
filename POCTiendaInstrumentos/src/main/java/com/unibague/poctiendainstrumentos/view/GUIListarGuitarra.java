@@ -7,6 +7,7 @@ package com.unibague.poctiendainstrumentos.view;
 import com.unibague.poctiendainstrumentos.model.Instrumento;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import com.unibague.poctiendainstrumentos.service.ServicioObserver;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,12 +15,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author gerca
  */
-public class GUIListarGuitarra extends javax.swing.JFrame {
+public class GUIListarGuitarra extends javax.swing.JFrame implements IObserver {
     
     private IServicioInstrumento servicioInstrumento;
+    private ServicioObserver servicioObserver;
     
     public GUIListarGuitarra(IServicioInstrumento servicioInstrumento) {
         this.servicioInstrumento = servicioInstrumento;
+        servicioObserver = ServicioObserver.getInstance();
+        servicioObserver.agregarVentana(this);
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -43,6 +47,11 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
         setTitle("Listar guitarra");
         setPreferredSize(new java.awt.Dimension(660, 354));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tblListarGuitarra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,21 +135,33 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        servicioObserver.eliminarVentana(this);
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        listar();
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       servicioObserver.eliminarVentana(this);
+    }//GEN-LAST:event_formWindowClosing
+        
+    private void listar() {
         List<Guitarra> listaGuitarras = servicioInstrumento.listarGuitarras();
         DefaultTableModel model = (DefaultTableModel) tblListarGuitarra.getModel();
         model.setRowCount(0);
-        for(Guitarra guitarra : listaGuitarras)
-        {
+        for (Guitarra guitarra : listaGuitarras) {
             model.addRow(new Object[]{guitarra.getCodigo(), guitarra.getNombre(), guitarra.getMarca(), guitarra.calcularValor(),
-                    guitarra.getStock(),guitarra.getTipo(),  guitarra.getMaterialCuerpo(), guitarra.getFundas().isEmpty()? "No":"Si"});
+                guitarra.getStock(), guitarra.getTipo(), guitarra.getMaterialCuerpo(), guitarra.getFundas().isEmpty() ? "No" : "Si"});
         }
-    }//GEN-LAST:event_btnListarActionPerformed
-
+    }
     
+    @Override
+    public void actualizar() {
+        listar();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
@@ -149,4 +170,5 @@ public class GUIListarGuitarra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblListarGuitarra;
     // End of variables declaration//GEN-END:variables
+
 }

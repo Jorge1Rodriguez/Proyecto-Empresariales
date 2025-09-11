@@ -6,12 +6,14 @@ package com.unibague.poctiendainstrumentos.view;
 
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
 import com.unibague.poctiendainstrumentos.service.ServicioInstrumento;
+import com.unibague.poctiendainstrumentos.service.ServicioObserver;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 public class GUIPrincipal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIPrincipal.class.getName());
     private IServicioInstrumento servicioInstrumento;
 
@@ -292,7 +294,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         GUIEliminarGuitarra gui = new GUIEliminarGuitarra(servicioInstrumento);
         gui.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemEliminarGuitarraActionPerformed
 
     private void jMenuItemEliminarFundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarFundaActionPerformed
@@ -308,10 +310,10 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemListarGuitarraActionPerformed
 
     private void jMenuItemGuardarPresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarPresetActionPerformed
-       
+
         GUIGuardarPreset gui = new GUIGuardarPreset(servicioInstrumento);
         gui.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemGuardarPresetActionPerformed
 
     private void jMenuItemActualizarTecladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActualizarTecladoActionPerformed
@@ -363,7 +365,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        /*try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());

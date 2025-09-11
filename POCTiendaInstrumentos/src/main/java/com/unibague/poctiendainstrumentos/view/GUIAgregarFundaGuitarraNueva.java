@@ -7,6 +7,7 @@ package com.unibague.poctiendainstrumentos.view;
 import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import java.util.NoSuchElementException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -174,7 +175,8 @@ public class GUIAgregarFundaGuitarraNueva extends javax.swing.JFrame {
 
                 } else {
                     String[] atributos = gui.getAtributosGuitarra();
-                    Guitarra guitarraNueva = new Guitarra(atributos[0], atributos[1], atributos[2],
+                    Guitarra guitarraNueva;
+                    guitarraNueva = new Guitarra(atributos[0], atributos[1], atributos[2],
                             Double.parseDouble(atributos[3]), Integer.parseInt(atributos[4]), atributos[5], atributos[6]);
                     servicioInstrumento.agregarInstrumento(guitarraNueva);
 
@@ -191,7 +193,7 @@ public class GUIAgregarFundaGuitarraNueva extends javax.swing.JFrame {
                     gui.getTxtMaterialCuerpo().setText("");
                     gui.getBtnGroupDigitalAnalogico().clearSelection();
                 }
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "El precio debe ser numerico", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }

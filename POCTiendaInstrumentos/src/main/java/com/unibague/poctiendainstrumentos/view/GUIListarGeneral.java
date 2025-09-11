@@ -3,18 +3,22 @@ package com.unibague.poctiendainstrumentos.view;
 import com.unibague.poctiendainstrumentos.model.Instrumento;
 import com.unibague.poctiendainstrumentos.model.Teclado;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import com.unibague.poctiendainstrumentos.service.ServicioObserver;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-public class GUIListarGeneral extends javax.swing.JFrame {
+public class GUIListarGeneral extends javax.swing.JFrame implements IObserver {
 
-    
     private IServicioInstrumento servicioInstrumento;
+    private ServicioObserver servicioObserver;
+
     /**
      * Creates new form GUIListarGeneral
      */
     public GUIListarGeneral(IServicioInstrumento servicioInstrumento) {
         this.servicioInstrumento = servicioInstrumento;
+        this.servicioObserver = ServicioObserver.getInstance();
+        servicioObserver.agregarVentana(this);
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -37,6 +41,11 @@ public class GUIListarGeneral extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listar instrumentos");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
@@ -53,19 +62,17 @@ public class GUIListarGeneral extends javax.swing.JFrame {
         });
 
         tblListarGeneral.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nombre", "Marca", "Precio", "Stock", "Instrumento"
-            }
+                new Object[][]{},
+                new String[]{
+                    "Código", "Nombre", "Marca", "Precio", "Stock", "Instrumento"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblListarGeneral);
@@ -73,61 +80,72 @@ public class GUIListarGeneral extends javax.swing.JFrame {
         javax.swing.GroupLayout pnListarLayout = new javax.swing.GroupLayout(pnListar);
         pnListar.setLayout(pnListarLayout);
         pnListarLayout.setHorizontalGroup(
-            pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         pnListarLayout.setVerticalGroup(
-            pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnListarLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+                pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnListarLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCerrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, Short.MAX_VALUE)
-                        .addComponent(btnListar)))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnCerrar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, Short.MAX_VALUE)
+                                                .addComponent(btnListar)))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar)
-                    .addComponent(btnCerrar))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(pnListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnListar)
+                                        .addComponent(btnCerrar))
+                                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void btnListar(java.awt.event.ActionEvent evt) {                           
+    private void btnListar(java.awt.event.ActionEvent evt) {
+        listar();
+    }
+
+    private void btnCerrar(java.awt.event.ActionEvent evt) {
+        servicioObserver.eliminarVentana(this);
+        dispose();
+    }
+
+    @Override
+    public void actualizar() {
+        listar();
+    }
+
+    private void listar() {
         List<Instrumento> listaInstrumentos = servicioInstrumento.listarInstrumentos();
         DefaultTableModel model = (DefaultTableModel) tblListarGeneral.getModel();
         model.setRowCount(0);
-        for(Instrumento instrumento : listaInstrumentos)
-        {
+        for (Instrumento instrumento : listaInstrumentos) {
             model.addRow(new Object[]{instrumento.getCodigo(), instrumento.getNombre(), instrumento.getMarca(), instrumento.calcularValor(),
-                    instrumento.getStock(), instrumento instanceof Teclado ? "Teclado" : "Guitarra"});
+                instrumento.getStock(), instrumento instanceof Teclado ? "Teclado" : "Guitarra"});
         }
-    }                          
+    }
 
-    private void btnCerrar(java.awt.event.ActionEvent evt) {                           
-        dispose();
-    }                          
-
-    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        servicioObserver.eliminarVentana(this);
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton btnCerrar;
@@ -136,4 +154,5 @@ public class GUIListarGeneral extends javax.swing.JFrame {
     private javax.swing.JPanel pnListar;
     private javax.swing.JTable tblListarGeneral;
     // End of variables declaration                   
+
 }

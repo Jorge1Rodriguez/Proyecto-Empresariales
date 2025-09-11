@@ -7,6 +7,7 @@ package com.unibague.poctiendainstrumentos.view;
 import com.unibague.poctiendainstrumentos.model.Funda;
 import com.unibague.poctiendainstrumentos.model.Guitarra;
 import com.unibague.poctiendainstrumentos.service.IServicioInstrumento;
+import com.unibague.poctiendainstrumentos.service.ServicioObserver;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,17 +15,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author gerca
  */
-public class GUIListarFundas extends javax.swing.JFrame {
-    
+public class GUIListarFundas extends javax.swing.JFrame implements IObserver {
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIListarFundas.class.getName());
     GUIBuscarGuitarra gui;
     private IServicioInstrumento servicioInstrumento;
+    private ServicioObserver servicioObserver;
 
     /**
      * Creates new form GUIActualizarStock
      */
     public GUIListarFundas(GUIBuscarGuitarra gui) {
         this.gui = gui;
+        this.servicioObserver = ServicioObserver.getInstance();
+        servicioObserver.agregarVentana(this);
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -47,6 +51,11 @@ public class GUIListarFundas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listar fundas");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tblFundas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,20 +137,32 @@ public class GUIListarFundas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        servicioObserver.eliminarVentana(this);
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        listar();
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        servicioObserver.eliminarVentana(this);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void listar() {
         List<Funda> listaFundas = gui.getGuitarra().getFundas();
         DefaultTableModel model = (DefaultTableModel) tblFundas.getModel();
         model.setRowCount(0);
-        for(Funda funda : listaFundas)
-        {
+        for (Funda funda : listaFundas) {
             model.addRow(new Object[]{funda.getCodigo(), funda.getNombre(), funda.getPrecio()});
         }
-    }//GEN-LAST:event_btnListarActionPerformed
+    }
 
-    
+    @Override
+    public void actualizar() {
+        listar();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
@@ -150,4 +171,5 @@ public class GUIListarFundas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFundas;
     // End of variables declaration//GEN-END:variables
+
 }

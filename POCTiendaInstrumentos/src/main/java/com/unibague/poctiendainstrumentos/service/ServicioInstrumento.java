@@ -53,7 +53,7 @@ public class ServicioInstrumento implements IServicioInstrumento {
      * Colección de instrumentos administrados por el servicio.
      */
     private List<Instrumento> instrumentos;
-    
+
     private static ServicioInstrumento instancia;
 
     /**
@@ -64,17 +64,13 @@ public class ServicioInstrumento implements IServicioInstrumento {
         this.instrumentos = new ArrayList<>();
     }
 
-    
-    public static ServicioInstrumento getInstance()
-    {
-        if(instancia == null)
-        {
+    public static ServicioInstrumento getInstance() {
+        if (instancia == null) {
             instancia = new ServicioInstrumento();
         }
         return instancia;
     }
-    
-    
+
     /**
      * Agrega un nuevo instrumento al servicio.
      *
@@ -91,6 +87,8 @@ public class ServicioInstrumento implements IServicioInstrumento {
             throw new IllegalArgumentException("Ya existe un instrumento con este código");
         }
         instrumentos.add(instrumento);
+        ServicioObserver.getInstance().actualizar();
+
     }
 
     /**
@@ -101,6 +99,7 @@ public class ServicioInstrumento implements IServicioInstrumento {
     @Override
     public List<Instrumento> listarInstrumentos() {
         return Collections.unmodifiableList(instrumentos);
+
     }
 
     /**
@@ -135,7 +134,6 @@ public class ServicioInstrumento implements IServicioInstrumento {
         }
         return teclados;
     }
-    
 
     /**
      * Busca un instrumento en la colección, identificado por su código.
@@ -166,6 +164,7 @@ public class ServicioInstrumento implements IServicioInstrumento {
         Instrumento instrumentoaEditar = buscarInstrumento(codigo);
         if (instrumentoaEditar != null) {
             instrumentos.set(instrumentos.indexOf(instrumentoaEditar), instrumento);
+            ServicioObserver.getInstance().actualizar();
         } else {
             throw new NoSuchElementException("No se encontró un instrumento con el código: " + codigo);
         }
@@ -183,6 +182,7 @@ public class ServicioInstrumento implements IServicioInstrumento {
         Instrumento instrumentoaEliminar = buscarInstrumento(codigo);
         if (instrumentoaEliminar != null) {
             instrumentos.remove(instrumentoaEliminar);
+            ServicioObserver.getInstance().actualizar();
         } else {
             throw new NoSuchElementException("No se encontró un instrumento con el código: " + codigo);
         }

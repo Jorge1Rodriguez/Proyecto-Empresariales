@@ -204,7 +204,6 @@ public class GUIEliminarGuitarra extends javax.swing.JFrame {
         } else {
             Guitarra guitarraBuscar = (Guitarra) servicioInstrumento.buscarInstrumento(txtCodigo.getText());
             if (guitarraBuscar != null) {
-                txtCodigo.setEditable(false);
                 txtNombre.setText(guitarraBuscar.getNombre());
                 txtMarca.setText(guitarraBuscar.getMarca());
                 txtPrecio.setText(Double.toString(guitarraBuscar.getPrecio()));
@@ -233,7 +232,6 @@ public class GUIEliminarGuitarra extends javax.swing.JFrame {
             try {
                 servicioInstrumento.eliminarInstrumento(txtCodigo.getText());
 
-                txtCodigo.setEditable(false);
                 txtCodigo.setText("");
                 txtNombre.setText("");
                 txtMarca.setText("");
